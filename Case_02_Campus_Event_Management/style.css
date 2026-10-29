@@ -1,0 +1,763 @@
+/* ==========================================================================
+   TechVyuha '26 - Campus Tech Fest & Event Hub Stylesheet
+   Student: Yaswanth | Roll No: 26000918 | Branch: CSE | Section: CSM1
+   ========================================================================== */
+
+:root {
+  --fest-primary: #4f46e5;
+  --fest-primary-hover: #4338ca;
+  --fest-accent: #06b6d4;
+  --fest-pink: #ec4899;
+  --fest-dark: #0f172a;
+  --fest-surface: #1e293b;
+  --fest-gray: #64748b;
+  --fest-light: #f8fafc;
+  --fest-border: #e2e8f0;
+  --fest-white: #ffffff;
+  --fest-success: #10b981;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.fest-header {
+  background-color: #0b0f19;
+  color: var(--fest-white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.header-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0.9rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fest-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fest-logo-icon {
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.fest-brand h1 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(to right, #ffffff, #93c5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fest-brand p {
+  font-size: 0.72rem;
+  color: #94a3b8;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.user-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.user-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+}
+
+/* Hero Section */
+.fest-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #312e81 100%);
+  color: var(--fest-white);
+  padding: 3rem 1.5rem 2.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 1240px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-badge {
+  display: inline-block;
+  background-color: rgba(99, 102, 241, 0.2);
+  color: #a5b4fc;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(165, 180, 252, 0.3);
+  margin-bottom: 0.85rem;
+}
+
+.hero-content h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 0.75rem;
+}
+
+.hero-content p {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  max-width: 650px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1.25rem;
+  max-width: 700px;
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 16px;
+  backdrop-filter: blur(10px);
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* Main Events Area */
+.events-main {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+  width: 100%;
+  flex: 1;
+}
+
+/* Controls Bar */
+.controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.search-wrap {
+  position: relative;
+  flex: 1;
+  max-width: 380px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  color: var(--fest-gray);
+}
+
+.search-wrap input {
+  width: 100%;
+  padding: 10px 14px 10px 38px;
+  border-radius: 10px;
+  border: 1px solid var(--fest-border);
+  background-color: var(--fest-white);
+  font-size: 0.88rem;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-wrap input:focus {
+  border-color: var(--fest-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.category-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background-color: var(--fest-white);
+  border: 1px solid var(--fest-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--fest-gray);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  border-color: #cbd5e1;
+  color: var(--fest-dark);
+}
+
+.tab-btn.active {
+  background-color: var(--fest-primary);
+  color: var(--fest-white);
+  border-color: var(--fest-primary);
+}
+
+/* Events Grid */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.event-card {
+  background-color: var(--fest-white);
+  border-radius: 16px;
+  border: 1px solid var(--fest-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.12);
+}
+
+.card-banner {
+  height: 110px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+.banner-hackathon { background: linear-gradient(135deg, #1e1b4b, #312e81); }
+.banner-coding { background: linear-gradient(135deg, #0f172a, #0369a1); }
+.banner-paper { background: linear-gradient(135deg, #1e293b, #047857); }
+.banner-gaming { background: linear-gradient(135deg, #3b0764, #701a75); }
+
+.card-category-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  backdrop-filter: blur(8px);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.card-prize-badge {
+  background-color: #fef08a;
+  color: #854d0e;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-body h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--fest-dark);
+  margin-bottom: 0.45rem;
+}
+
+.event-desc {
+  font-size: 0.84rem;
+  color: #475569;
+  line-height: 1.45;
+  margin-bottom: 1.1rem;
+}
+
+.event-meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: #334155;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.fee-display {
+  display: flex;
+  flex-direction: column;
+}
+
+.fee-display span {
+  font-size: 0.7rem;
+  color: var(--fest-gray);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.fee-display strong {
+  font-size: 1.05rem;
+  color: var(--fest-dark);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.btn-primary-fest {
+  background-color: var(--fest-primary);
+  color: var(--fest-white);
+  border: none;
+}
+
+.btn-primary-fest:hover {
+  background-color: var(--fest-primary-hover);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--fest-white);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-block {
+  width: 100%;
+  padding: 12px;
+  font-size: 0.95rem;
+}
+
+/* Modals */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  background-color: var(--fest-white);
+  border-radius: 20px;
+  max-width: 580px;
+  width: 100%;
+  padding: 2rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.modal-sub {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--fest-primary);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.modal-top h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--fest-dark);
+}
+
+.btn-close {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--fest-gray);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 560px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.form-group input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--fest-border);
+  font-size: 0.85rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: var(--fest-primary);
+}
+
+.team-section {
+  background-color: #f8fafc;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  border: 1px dashed #cbd5e1;
+}
+
+.team-section h4 {
+  font-size: 0.82rem;
+  margin-bottom: 8px;
+  color: var(--fest-dark);
+}
+
+.payment-preview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eff6ff;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #bfdbfe;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.price-info span {
+  font-size: 0.75rem;
+  color: #1e40af;
+  display: block;
+}
+
+.price-info strong {
+  font-size: 1.2rem;
+  color: #1e3a8a;
+}
+
+.radio-options {
+  display: flex;
+  gap: 10px;
+  font-size: 0.78rem;
+  color: #1e3a8a;
+  font-weight: 600;
+}
+
+/* Digital Pass Styling */
+.pass-modal-box {
+  max-width: 480px;
+  padding: 1.5rem;
+}
+
+.pass-card {
+  background: linear-gradient(145deg, #0f172a, #1e1b4b);
+  color: var(--fest-white);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+}
+
+.pass-header {
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.pass-branding h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #38bdf8;
+}
+
+.pass-branding p {
+  font-size: 0.68rem;
+  color: #94a3b8;
+}
+
+.pass-id-tag {
+  background: rgba(56, 189, 248, 0.2);
+  color: #7dd3fc;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.pass-body {
+  padding: 1.5rem;
+}
+
+.pass-event-name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.pass-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.pass-details-grid .label {
+  display: block;
+  font-size: 0.68rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.pass-details-grid strong {
+  color: #f1f5f9;
+}
+
+.pass-team-info {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  color: #cbd5e1;
+}
+
+.pass-footer {
+  padding: 1.25rem 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.qr-mockup {
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.qr-pattern {
+  width: 44px;
+  height: 44px;
+  background-image: 
+    linear-gradient(45deg, #000 25%, transparent 25%), 
+    linear-gradient(-45deg, #000 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #000 75%), 
+    linear-gradient(-45deg, transparent 75%, #000 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+}
+
+.qr-mockup span {
+  font-size: 0.45rem;
+  color: #000000;
+  font-weight: 800;
+  margin-top: 2px;
+}
+
+.pass-status {
+  flex: 1;
+}
+
+.status-verified {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #4ade80;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.pass-status p {
+  font-size: 0.65rem;
+  color: #94a3b8;
+  line-height: 1.3;
+}
+
+.modal-footer-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.25rem;
+  justify-content: flex-end;
+}
+
+.modal-footer-actions .btn-outline {
+  color: var(--fest-dark);
+  border-color: var(--fest-border);
+}
+
+/* My Passes List */
+.my-passes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.registered-pass-item {
+  border: 1px solid var(--fest-border);
+  padding: 12px 14px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.registered-pass-item h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.registered-pass-item p {
+  font-size: 0.75rem;
+  color: var(--fest-gray);
+}
+
+/* Footer */
+.fest-footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--fest-white);
+  border-top: 1px solid var(--fest-border);
+  font-size: 0.78rem;
+  color: var(--fest-gray);
+  margin-top: auto;
+}

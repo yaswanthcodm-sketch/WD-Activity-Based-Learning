@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NRIIT Central E-Library & Academic Bookstore</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Top Navigation Header -->
+  <header class="lib-navbar">
+    <div class="lib-nav-inner">
+      <div class="lib-brand">
+        <div class="brand-icon">📚</div>
+        <div>
+          <h1>NRIIT Central E-Library</h1>
+          <p>Digital Academic Repository & Book Circulation Desk</p>
+        </div>
+      </div>
+
+      <div class="lib-nav-right">
+        <div class="student-pill">
+          <div class="student-avatar">Y</div>
+          <div>
+            <span class="s-name">Yaswanth</span>
+            <span class="s-id">26000918 • CSM1</span>
+          </div>
+        </div>
+        <button class="cart-btn" id="btnOpenBag">
+          <span>📖 Reading Bag</span>
+          <span class="cart-counter" id="bagCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner Section -->
+  <section class="lib-hero">
+    <div class="hero-text-wrap">
+      <span class="tag-academic">Department of Computer Science & Engineering</span>
+      <h2>Search, Borrow, and Explore Technical Textbooks</h2>
+      <p>Access required textbooks, reference handbooks, and research monographs. Borrow up to <strong>3 volumes</strong> simultaneously for 14 academic days.</p>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <main class="lib-container">
+    <!-- Search & Filter Controls -->
+    <div class="filter-wrapper">
+      <div class="search-box">
+        <span class="search-ico">🔎</span>
+        <input type="text" id="libSearch" placeholder="Search by title, author name, or ISBN..." />
+      </div>
+
+      <div class="genre-chips" id="categoryChips">
+        <button class="chip active" data-genre="all">All Disciplines</button>
+        <button class="chip" data-genre="cs-core">CS Core</button>
+        <button class="chip" data-genre="web-dev">Web & Full Stack</button>
+        <button class="chip" data-genre="ai-data">AI & Data Science</button>
+        <button class="chip" data-genre="math">Applied Math</button>
+      </div>
+    </div>
+
+    <!-- Active Borrowings Alert Strip -->
+    <div class="borrow-status-strip" id="borrowStatusStrip" style="display: none;">
+      <div class="strip-left">
+        <span>📌 You have <strong><span id="activeLoanCount">0</span> book(s)</strong> currently issued under Roll No: <strong>26000918</strong></span>
+      </div>
+      <button class="btn btn-sm btn-link" id="btnViewLoans">View Active Loans</button>
+    </div>
+
+    <!-- Books Grid -->
+    <div class="books-grid" id="booksGrid">
+      <!-- Injected dynamically via app.js -->
+    </div>
+  </main>
+
+  <!-- Reading Bag / Checkout Drawer -->
+  <div class="drawer-overlay" id="bagDrawer">
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <div>
+          <h3>My Reading Bag</h3>
+          <p class="drawer-sub">Select books to issue for the current semester</p>
+        </div>
+        <button class="btn-close" id="btnCloseBag">&times;</button>
+      </div>
+
+      <!-- Bag Items -->
+      <div class="bag-content">
+        <ul class="bag-list" id="bagList">
+          <li class="empty-bag-msg">Your reading bag is empty. Browse textbooks and click "Add to Bag".</li>
+        </ul>
+
+        <div class="loan-policy-box">
+          <h4>Circulation Rules:</h4>
+          <ul>
+            <li>Borrow Duration: <strong>14 Days</strong> from issuance date.</li>
+            <li>Maximum Capacity: <strong>3 Textbooks</strong> per student.</li>
+            <li>Late Retention Charge: <strong>₹ 2.00 per day</strong> after due date.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="drawer-footer">
+        <div class="due-date-preview">
+          <span>Scheduled Return Due Date:</span>
+          <strong id="previewDueDate">--</strong>
+        </div>
+        <button class="btn btn-lib-primary btn-block" id="btnIssueBooks" disabled>
+          Confirm Book Issuance
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loan Confirmation & Receipt Modal -->
+  <div class="modal-backdrop" id="loanModal">
+    <div class="modal-card">
+      <div class="modal-badge-icon">✓</div>
+      <h3>Library Circulation Receipt</h3>
+      <p class="sub">Transaction Logged — Dr. RVR NRIIT Central Library</p>
+
+      <div class="slip-container">
+        <div class="slip-meta-grid">
+          <div>
+            <label>Student Name:</label>
+            <strong>Yaswanth</strong>
+          </div>
+          <div>
+            <label>Roll Number:</label>
+            <strong>26000918</strong>
+          </div>
+          <div>
+            <label>Department:</label>
+            <strong>CSE (CSM1)</strong>
+          </div>
+          <div>
+            <label>Transaction ID:</label>
+            <strong id="receiptTxnId">NRIIT-LIB-7821</strong>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div id="receiptBooksList" class="receipt-books"></div>
+
+        <div class="divider"></div>
+
+        <div class="slip-meta-grid">
+          <div>
+            <label>Date of Issue:</label>
+            <span id="receiptIssueDate"></span>
+          </div>
+          <div>
+            <label>Return Due Date:</label>
+            <strong style="color:#b91c1c;" id="receiptDueDate"></strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="btnPrintSlip">Print Circulation Slip</button>
+        <button class="btn btn-lib-primary" id="btnCloseModal">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Active Loans Modal -->
+  <div class="modal-backdrop" id="activeLoansModal">
+    <div class="modal-card" style="max-width: 620px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3>My Active Book Loans</h3>
+        <button class="btn-close" id="btnCloseLoans">&times;</button>
+      </div>
+      <div id="activeLoansContainer"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="lib-footer">
+    <p>Dr. RVR NRI Institute of Technology • Activity-Based Learning (ABL) Assignment • Student: Yaswanth (26000918) | Section: CSM1</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

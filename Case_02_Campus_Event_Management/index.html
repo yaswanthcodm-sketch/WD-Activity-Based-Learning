@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechVyuha 2026 - Campus Tech Fest & Event Hub | Dr. RVR NRIIT</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Top Header Navigation -->
+  <header class="fest-header">
+    <div class="header-inner">
+      <div class="fest-brand">
+        <span class="fest-logo-icon">⚡</span>
+        <div>
+          <h1>TechVyuha '26</h1>
+          <p>Annual National Tech Symposium • Dr. RVR NRI Institute of Technology</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="user-pill">
+          <span class="user-dot"></span>
+          <span><strong>Yaswanth</strong> (26000918) | CSM1</span>
+        </div>
+        <button class="btn btn-outline" id="btnMyRegistrations">
+          My Passes (<span id="passCount">0</span>)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Fest Showcase -->
+  <section class="fest-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-badge">Department of CSE & Allied Branches Presents</span>
+      <h2>Code. Innovate. Conquer.</h2>
+      <p>Join over 1,500+ engineering students across 6 flagship hackathons, paper presentations, and coding arenas. Win exciting cash prizes and recognition.</p>
+      
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">₹ 1,50,000+</span>
+          <span class="stat-label">Prize Pool</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">6</span>
+          <span class="stat-label">Flagship Events</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">Nov 14-16</span>
+          <span class="stat-label">Event Dates</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">Campus Audis</span>
+          <span class="stat-label">Main Venue</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Portal Body -->
+  <main class="events-main">
+    <!-- Controls: Search & Category Chips -->
+    <div class="controls-bar">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="eventSearch" placeholder="Search events by title, keyword, or venue..." />
+      </div>
+
+      <div class="category-tabs" id="categoryTabs">
+        <button class="tab-btn active" data-cat="all">All Arenas</button>
+        <button class="tab-btn" data-cat="hackathon">Hackathon</button>
+        <button class="tab-btn" data-cat="coding">Coding & Web</button>
+        <button class="tab-btn" data-cat="paper">Paper & PPT</button>
+        <button class="tab-btn" data-cat="gaming">Gaming & AI</button>
+      </div>
+    </div>
+
+    <!-- Events Grid Container -->
+    <div class="events-grid" id="eventsGrid">
+      <!-- Injected dynamically via app.js -->
+    </div>
+  </main>
+
+  <!-- Event Registration Modal Form -->
+  <div class="modal-backdrop" id="regModal">
+    <div class="modal-box">
+      <div class="modal-top">
+        <div>
+          <span class="modal-sub">Event Registration Form</span>
+          <h3 id="modalEventTitle">CodeSprint 24-Hour Hackathon</h3>
+        </div>
+        <button class="btn-close" id="btnCloseRegModal">&times;</button>
+      </div>
+
+      <form id="regForm" class="reg-form">
+        <input type="hidden" id="selectedEventId" />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="studentName">Participant Full Name</label>
+            <input type="text" id="studentName" value="Yaswanth" required />
+          </div>
+          <div class="form-group">
+            <label for="studentRoll">Roll Number</label>
+            <input type="text" id="studentRoll" value="26000918" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="studentBranch">Branch & Section</label>
+            <input type="text" id="studentBranch" value="CSE (CSM1)" required />
+          </div>
+          <div class="form-group">
+            <label for="studentCollege">College / Institution</label>
+            <input type="text" id="studentCollege" value="Dr. RVR NRI Institute of Technology" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="studentEmail">Email ID</label>
+            <input type="email" id="studentEmail" placeholder="yaswanth.26000918@nriit.edu.in" required />
+          </div>
+          <div class="form-group">
+            <label for="studentPhone">Mobile Number</label>
+            <input type="tel" id="studentPhone" placeholder="9876543210" required />
+          </div>
+        </div>
+
+        <!-- Dynamic Team Members Container -->
+        <div id="teamMembersSection" class="team-section" style="display: none;">
+          <h4>Team Members (Max <span id="teamLimit">3</span> members)</h4>
+          <div id="teamInputsContainer"></div>
+        </div>
+
+        <!-- Fee & Payment Info -->
+        <div class="payment-preview">
+          <div class="price-info">
+            <span>Registration Fee:</span>
+            <strong id="modalEventFee">₹ 200</strong>
+          </div>
+          <div class="form-group-pay">
+            <label>Payment Method:</label>
+            <div class="radio-options">
+              <label><input type="radio" name="payMethod" value="UPI / PhonePe" checked /> UPI</label>
+              <label><input type="radio" name="payMethod" value="College Desk" /> College Desk</label>
+              <label><input type="radio" name="payMethod" value="Free Waiver" /> Department Pass</label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary-fest btn-block">Confirm Registration & Generate Pass</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Digital Pass / E-Ticket Modal -->
+  <div class="modal-backdrop" id="ticketModal">
+    <div class="modal-box pass-modal-box">
+      <div class="pass-card" id="printableTicket">
+        <div class="pass-header">
+          <div class="pass-branding">
+            <h3>TECHVYUHA '26 PASS</h3>
+            <p>Dr. RVR NRI Institute of Technology</p>
+          </div>
+          <div class="pass-id-tag" id="ticketPassId">NRIIT-TV26-8918</div>
+        </div>
+
+        <div class="pass-body">
+          <div class="pass-event-name" id="ticketEventName">National 24-Hr Hackathon</div>
+          
+          <div class="pass-details-grid">
+            <div>
+              <span class="label">Candidate Name:</span>
+              <strong id="ticketCandidate">Yaswanth</strong>
+            </div>
+            <div>
+              <span class="label">Roll Number:</span>
+              <strong id="ticketRoll">26000918</strong>
+            </div>
+            <div>
+              <span class="label">Department:</span>
+              <strong id="ticketBranch">CSE (CSM1)</strong>
+            </div>
+            <div>
+              <span class="label">Venue & Date:</span>
+              <strong id="ticketVenue">CSE Lab 3 • Nov 14, 09:30 AM</strong>
+            </div>
+          </div>
+
+          <div class="pass-team-info" id="ticketTeamInfo"></div>
+        </div>
+
+        <div class="pass-footer">
+          <div class="qr-mockup">
+            <div class="qr-pattern"></div>
+            <span>SCAN AT VENUE GATE</span>
+          </div>
+          <div class="pass-status">
+            <span class="status-verified">STATUS: VERIFIED & CONFIRMED</span>
+            <p>Please present this digital pass along with college ID card at registration desk.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer-actions">
+        <button class="btn btn-outline" id="btnPrintTicket">Print / Save Ticket</button>
+        <button class="btn btn-primary-fest" id="btnCloseTicket">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- My Passes Drawer / Modal -->
+  <div class="modal-backdrop" id="myPassesModal">
+    <div class="modal-box">
+      <div class="modal-top">
+        <h3>My Registered Event Passes</h3>
+        <button class="btn-close" id="btnCloseMyPasses">&times;</button>
+      </div>
+      <div class="my-passes-list" id="myPassesContainer">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="fest-footer">
+    <p>Dr. RVR NRI Institute of Technology • Activity-Based Learning (ABL) Assignment • Student: Yaswanth (26000918) | Section: CSM1</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
