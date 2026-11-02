@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPulse - NRIIT Online Learning Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Global Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <span class="brand-icon">⚡</span>
+                <div>
+                    <span class="brand-title">EduPulse</span>
+                    <span class="brand-sub">NRIIT E-Learning Hub</span>
+                </div>
+            </div>
+
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="courseSearch" placeholder="Search courses, instructors, tech stack...">
+            </div>
+
+            <div class="nav-user">
+                <div class="active-badge">📚 Enrolled: 3 Courses</div>
+                <div class="user-pill">
+                    <span class="avatar-sm">YA</span>
+                    <span class="name">Yaswanth Avirneni</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner with In-Progress Learning Indicator -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <span class="tag-live">● Active Learning Session</span>
+            <h1>Advance Your Engineering Skills with Hands-on Courses</h1>
+            <p>Curated curriculum by Dr. RVR NRIIT Faculty and Industry Architects. Learn full-stack web engineering, machine learning pipelines, and cloud systems.</p>
+            
+            <!-- In-Progress Learning Card -->
+            <div class="current-track-card">
+                <div class="track-header">
+                    <div class="track-info">
+                        <span class="pill-track">CONTINUE WATCHING</span>
+                        <h3>Full-Stack Modern Web Engineering (MERN & Cloud)</h3>
+                        <p class="track-lesson">Current Lesson: <i>Module 4: Responsive CSS Flexbox & CSS Grid Mastery</i></p>
+                    </div>
+                    <a href="#enrollModal" class="resume-btn">▶ Resume (14:20)</a>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-labels">
+                        <span>Overall Course Progress</span>
+                        <span class="progress-pct">68% Complete (18 / 26 Lessons)</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-bar-fill" style="width: 68%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Catalog Container -->
+    <main class="main-container">
+        <!-- Category Filter Tabs -->
+        <div class="filter-wrapper">
+            <div class="category-tabs" id="categoryFilters">
+                <button class="cat-btn active" data-category="all">All Disciplines (6)</button>
+                <button class="cat-btn" data-category="web">Web Development (2)</button>
+                <button class="cat-btn" data-category="ai">AI & Machine Learning (2)</button>
+                <button class="cat-btn" data-category="dsa">Data Structures (1)</button>
+                <button class="cat-btn" data-category="cloud">Cloud & DevOps (1)</button>
+            </div>
+            <div class="sort-wrapper">
+                <span class="sort-lbl">Level:</span>
+                <select id="levelFilter" class="filter-select">
+                    <option value="all">All Levels</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Course Cards Grid -->
+        <section class="courses-grid" id="coursesContainer">
+            <!-- Course Card 1 -->
+            <article class="course-card" data-category="web" data-level="Intermediate">
+                <div class="thumbnail-wrapper">
+                    <div class="thumbnail-bg grad-blue">
+                        <span class="play-trigger">▶</span>
+                        <div class="tech-stack-badges">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JS</span>
+                        </div>
+                    </div>
+                    <span class="duration-badge">⏱️ 18h 45m • 26 Lessons</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="category-pill web">Web Development</span>
+                        <span class="level-pill">Intermediate</span>
+                    </div>
+                    <h3 class="course-title">Full-Stack Modern Web Engineering</h3>
+                    <p class="course-desc">Master semantic HTML5, CSS Flexbox/Grid, asynchronous DOM APIs, and scalable modular component architectures.</p>
+                    
+                    <div class="learning-objectives">
+                        <h4>🎯 Learning Objectives:</h4>
+                        <ul>
+                            <li>Build responsive fluid layouts without UI libraries</li>
+                            <li>Develop accessible form validation systems</li>
+                            <li>Deploy production projects to GitHub Pages</li>
+                        </ul>
+                    </div>
+
+                    <div class="instructor-row">
+                        <div class="inst-avatar">SR</div>
+                        <div class="inst-info">
+                            <span class="inst-name">Dr. S. Ramesh, Ph.D.</span>
+                            <span class="inst-role">Associate Professor, NRIIT CSE</span>
+                        </div>
+                        <div class="rating-box">
+                            <span class="stars">★ 4.9</span>
+                            <span class="students">(1,240)</span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="price-box">
+                            <span class="price-free">Free</span>
+                            <span class="price-sub">NRIIT Student Grant</span>
+                        </div>
+                        <a href="#enrollModal" class="enroll-btn enrolled">Enrolled (Resume)</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Course Card 2 -->
+            <article class="course-card" data-category="ai" data-level="Beginner">
+                <div class="thumbnail-wrapper">
+                    <div class="thumbnail-bg grad-purple">
+                        <span class="play-trigger">▶</span>
+                        <div class="tech-stack-badges">
+                            <span>Python</span>
+                            <span>NumPy</span>
+                            <span>Pandas</span>
+                        </div>
+                    </div>
+                    <span class="duration-badge">⏱️ 22h 10m • 32 Lessons</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="category-pill ai">AI & Machine Learning</span>
+                        <span class="level-pill">Beginner</span>
+                    </div>
+                    <h3 class="course-title">Python for Machine Learning & Data Analytics</h3>
+                    <p class="course-desc">From NumPy array vectors to scikit-learn models. Learn data cleaning, exploratory data analysis, and predictive models.</p>
+                    
+                    <div class="learning-objectives">
+                        <h4>🎯 Learning Objectives:</h4>
+                        <ul>
+                            <li>Perform vectorized computations with NumPy & SciPy</li>
+                            <li>Feature engineering and outlier imputation</li>
+                            <li>Evaluate models using ROC-AUC and Confusion Matrices</li>
+                        </ul>
+                    </div>
+
+                    <div class="instructor-row">
+                        <div class="inst-avatar">KP</div>
+                        <div class="inst-info">
+                            <span class="inst-name">Prof. K. Praveen Kumar</span>
+                            <span class="inst-role">Head of AI & ML, Dr. RVR NRIIT</span>
+                        </div>
+                        <div class="rating-box">
+                            <span class="stars">★ 4.95</span>
+                            <span class="students">(2,180)</span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="price-box">
+                            <span class="price-free">Free</span>
+                            <span class="price-sub">Campus License</span>
+                        </div>
+                        <a href="#enrollModal" class="enroll-btn">Enroll Now</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Course Card 3 -->
+            <article class="course-card" data-category="dsa" data-level="Intermediate">
+                <div class="thumbnail-wrapper">
+                    <div class="thumbnail-bg grad-emerald">
+                        <span class="play-trigger">▶</span>
+                        <div class="tech-stack-badges">
+                            <span>C++</span>
+                            <span>Trees</span>
+                            <span>Graphs</span>
+                        </div>
+                    </div>
+                    <span class="duration-badge">⏱️ 30h 00m • 42 Lessons</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="category-pill dsa">Data Structures</span>
+                        <span class="level-pill">Intermediate</span>
+                    </div>
+                    <h3 class="course-title">Algorithms & Competitive Problem Solving</h3>
+                    <p class="course-desc">Master recursion trees, asymptotic time complexity analysis, dynamic programming, Dijkstra, and segment trees.</p>
+                    
+                    <div class="learning-objectives">
+                        <h4>🎯 Learning Objectives:</h4>
+                        <ul>
+                            <li>Analyze Big-O time and auxiliary space bounds</li>
+                            <li>Implement balanced AVL trees and Disjoint Set Unions</li>
+                            <li>Solve LeetCode Medium/Hard algorithmic challenges</li>
+                        </ul>
+                    </div>
+
+                    <div class="instructor-row">
+                        <div class="inst-avatar">VN</div>
+                        <div class="inst-info">
+                            <span class="inst-name">Dr. V. Nagasri, Ph.D.</span>
+                            <span class="inst-role">Senior Professor, Data Structures</span>
+                        </div>
+                        <div class="rating-box">
+                            <span class="stars">★ 4.88</span>
+                            <span class="students">(1,840)</span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="price-box">
+                            <span class="price-free">Free</span>
+                            <span class="price-sub">Academic Allotment</span>
+                        </div>
+                        <a href="#enrollModal" class="enroll-btn">Enroll Now</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Course Card 4 -->
+            <article class="course-card" data-category="cloud" data-level="Advanced">
+                <div class="thumbnail-wrapper">
+                    <div class="thumbnail-bg grad-amber">
+                        <span class="play-trigger">▶</span>
+                        <div class="tech-stack-badges">
+                            <span>Docker</span>
+                            <span>K8s</span>
+                            <span>AWS</span>
+                        </div>
+                    </div>
+                    <span class="duration-badge">⏱️ 16h 20m • 24 Lessons</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="category-pill cloud">Cloud & DevOps</span>
+                        <span class="level-pill">Advanced</span>
+                    </div>
+                    <h3 class="course-title">Cloud Infrastructure & Docker Microservices</h3>
+                    <p class="course-desc">Containerize enterprise applications with Docker multi-stage builds and configure automated CI/CD deployment pipelines.</p>
+                    
+                    <div class="learning-objectives">
+                        <h4>🎯 Learning Objectives:</h4>
+                        <ul>
+                            <li>Build slim Alpine Linux container images</li>
+                            <li>Configure Nginx reverse proxies with SSL termination</li>
+                            <li>Automate integration testing via GitHub Actions</li>
+                        </ul>
+                    </div>
+
+                    <div class="instructor-row">
+                        <div class="inst-avatar">AN</div>
+                        <div class="inst-info">
+                            <span class="inst-name">Er. Anand Narayana</span>
+                            <span class="inst-role">DevOps Architect & Adjunct Faculty</span>
+                        </div>
+                        <div class="rating-box">
+                            <span class="stars">★ 4.92</span>
+                            <span class="students">(960)</span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="price-box">
+                            <span class="price-free">Free</span>
+                            <span class="price-sub">NRIIT Student Access</span>
+                        </div>
+                        <a href="#enrollModal" class="enroll-btn">Enroll Now</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Course Card 5 -->
+            <article class="course-card" data-category="web" data-level="Beginner">
+                <div class="thumbnail-wrapper">
+                    <div class="thumbnail-bg grad-cyan">
+                        <span class="play-trigger">▶</span>
+                        <div class="tech-stack-badges">
+                            <span>UI/UX</span>
+                            <span>Figma</span>
+                            <span>CSS</span>
+                        </div>
+                    </div>
+                    <span class="duration-badge">⏱️ 12h 15m • 18 Lessons</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="category-pill web">Web Development</span>
+                        <span class="level-pill">Beginner</span>
+                    </div>
+                    <h3 class="course-title">Modern UI/UX Design with Figma & CSS</h3>
+                    <p class="course-desc">Design aesthetic, human-centered web interfaces with design tokens, typography scales, contrast ratios, and wireframing.</p>
+                    
+                    <div class="learning-objectives">
+                        <h4>🎯 Learning Objectives:</h4>
+                        <ul>
+                            <li>Construct reusable auto-layout design components</li>
+                            <li>Adhere to WCAG 2.1 AA accessibility guidelines</li>
+                            <li>Export scalable vector assets and CSS variables</li>
+                        </ul>
+                    </div>
+
+                    <div class="instructor-row">
+                        <div class="inst-avatar">ML</div>
+                        <div class="inst-info">
+                            <span class="inst-name">Ms. M. Lavanya</span>
+                            <span class="inst-role">Lead UX Designer & Faculty</span>
+                        </div>
+                        <div class="rating-box">
+                            <span class="stars">★ 4.85</span>
+                            <span class="students">(1,120)</span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="price-box">
+                            <span class="price-free">Free</span>
+                            <span class="price-sub">Open Course</span>
+                        </div>
+                        <a href="#enrollModal" class="enroll-btn">Enroll Now</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Course Card 6 -->
+            <article class="course-card" data-category="ai" data-level="Advanced">
+                <div class="thumbnail-wrapper">
+                    <div class="thumbnail-bg grad-indigo">
+                        <span class="play-trigger">▶</span>
+                        <div class="tech-stack-badges">
+                            <span>PyTorch</span>
+                            <span>NLP</span>
+                            <span>LLMs</span>
+                        </div>
+                    </div>
+                    <span class="duration-badge">⏱️ 26h 40m • 38 Lessons</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="category-pill ai">AI & Machine Learning</span>
+                        <span class="level-pill">Advanced</span>
+                    </div>
+                    <h3 class="course-title">Deep Learning & Transformer Architectures</h3>
+                    <p class="course-desc">Build neural networks from scratch using PyTorch tensors, self-attention mechanisms, and transfer learning workflows.</p>
+                    
+                    <div class="learning-objectives">
+                        <h4>🎯 Learning Objectives:</h4>
+                        <ul>
+                            <li>Derive backpropagation algorithms mathematically</li>
+                            <li>Implement Multi-Head Attention mechanisms in PyTorch</li>
+                            <li>Fine-tune open-weight models on custom datasets</li>
+                        </ul>
+                    </div>
+
+                    <div class="instructor-row">
+                        <div class="inst-avatar">KP</div>
+                        <div class="inst-info">
+                            <span class="inst-name">Prof. K. Praveen Kumar</span>
+                            <span class="inst-role">Head of AI & ML, Dr. RVR NRIIT</span>
+                        </div>
+                        <div class="rating-box">
+                            <span class="stars">★ 4.96</span>
+                            <span class="students">(1,410)</span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="price-box">
+                            <span class="price-free">Free</span>
+                            <span class="price-sub">Specialization Capstone</span>
+                        </div>
+                        <a href="#enrollModal" class="enroll-btn">Enroll Now</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- Interactive Enrollment / Syllabus Modal (Pure CSS :target) -->
+    <div class="modal-overlay" id="enrollModal">
+        <div class="modal-card">
+            <a href="#" class="modal-close">✕</a>
+            <div class="modal-header">
+                <span class="modal-badge">🎓 COURSE ENROLLMENT</span>
+                <h2>Course Curriculum & Learning Objectives</h2>
+                <p>Instructor: Dr. RVR NRIIT Department of CSE</p>
+            </div>
+            <div class="modal-body">
+                <div class="student-verify-box">
+                    <p><strong>Enrolling Student:</strong> Yaswanth Avirneni (Roll No: 26000918)</p>
+                    <p><strong>Section:</strong> CSM-1 • Dept of CSE (AI & ML) • Dr. RVR NRIIT</p>
+                </div>
+                <h4>Curriculum Syllabus Highlights</h4>
+                <div class="syllabus-list">
+                    <div class="syllabus-item">
+                        <span class="mod-num">Module 1</span>
+                        <span>Foundations & Environment Configuration</span>
+                        <span class="mod-time">3 Lessons • 2h 15m</span>
+                    </div>
+                    <div class="syllabus-item">
+                        <span class="mod-num">Module 2</span>
+                        <span>Core Theoretical & Practical Implementation</span>
+                        <span class="mod-time">8 Lessons • 6h 30m</span>
+                    </div>
+                    <div class="syllabus-item">
+                        <span class="mod-num">Module 3</span>
+                        <span>Lab Experiments, Coding Assignments & Capstone</span>
+                        <span class="mod-time">6 Lessons • 5h 00m</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn-cancel">Close</a>
+                <a href="#enrollSuccess" class="btn-confirm">Confirm Student Enrollment</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enrollment Success Notification Modal (Pure CSS :target) -->
+    <div class="modal-overlay" id="enrollSuccess">
+        <div class="modal-card">
+            <a href="#" class="modal-close">✕</a>
+            <div class="modal-header">
+                <span class="modal-badge success">✓ ENROLLMENT CONFIRMED</span>
+                <h2>Course Added Successfully!</h2>
+                <p>Direct enrollment synced with Dr. RVR NRIIT student record.</p>
+            </div>
+            <div class="modal-body">
+                <div class="student-verify-box">
+                    <p><strong>Student:</strong> Yaswanth Avirneni (26000918)</p>
+                    <p><strong>Branch / Section:</strong> CSE (AI & ML) • CSM-1</p>
+                    <p><strong>Status:</strong> Active Course Grant Enabled</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn-confirm">Back to Courses</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Platform Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p><strong>Dr. RVR NRI Institute of Technology</strong> • Web Development Activity-Based Learning (Case Study 3)</p>
+            <p>Designed & Developed by <strong>Yaswanth Avirneni</strong> | Roll No: <strong>26000918</strong> | CSM-1 (CSE - AI & ML)</p>
+        </div>
+    </footer>
+</body>
+</html>

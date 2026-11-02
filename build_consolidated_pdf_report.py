@@ -1,21 +1,15 @@
 import os
-import sys
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
-from reportlab.platypus import (
-    SimpleDocTemplate, Paragraph, Spacer, Image as RLImage,
-    Table, TableStyle, PageBreak, KeepTogether, HRFlowable
-)
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.platypus import (
+    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image, PageBreak, KeepTogether, HRFlowable
+)
 from reportlab.pdfgen import canvas
 
-REPO_DIR = "/Users/yaswanth/.gemini/antigravity/scratch/WD-Activity-Based-Learning"
-REPORTS_DIR = os.path.join(REPO_DIR, "reports")
-SCREENSHOTS_DIR = os.path.join(REPO_DIR, "screenshots")
-os.makedirs(REPORTS_DIR, exist_ok=True)
-
-PDF_PATH = os.path.join(REPORTS_DIR, "WD_ABL_Consolidated_Report.pdf")
-ROOT_PDF_PATH = os.path.join(REPO_DIR, "WD_ABL_Consolidated_Report.pdf")
+BASE_DIR = "/Users/yaswanth/.gemini/antigravity/scratch/WD-Activity-Based-Learning"
+SCREENSHOTS_DIR = os.path.join(BASE_DIR, "screenshots")
+PDF_PATH = os.path.join(BASE_DIR, "Consolidated_Report.pdf")
 
 class NumberedCanvas(canvas.Canvas):
     def __init__(self, *args, **kwargs):
@@ -30,37 +24,37 @@ class NumberedCanvas(canvas.Canvas):
         num_pages = len(self._saved_page_states)
         for state in self._saved_page_states:
             self.__dict__.update(state)
-            self.draw_page_decorations(num_pages)
+            self.draw_header_footer(num_pages)
             super().showPage()
         super().save()
 
-    def draw_page_decorations(self, page_count):
+    def draw_header_footer(self, total_pages):
         self.saveState()
-        # Suppress headers on cover page
+        self.setFont("Helvetica-Bold", 8)
+        self.setFillColor(colors.HexColor("#0f2942"))
+        
+        # Header (pages > 1)
         if self._pageNumber > 1:
-            # Header
-            self.setFont("Helvetica-Bold", 8)
-            self.setFillColor(colors.HexColor("#0f172a"))
-            self.drawString(54, 750, "DR. RVR NRI INSTITUTE OF TECHNOLOGY")
+            self.drawString(54, 755, "Dr. RVR NRI INSTITUTE OF TECHNOLOGY  |  Web Development Activity-Based Learning (ABL)")
             self.setFont("Helvetica", 8)
             self.setFillColor(colors.HexColor("#64748b"))
-            self.drawString(245, 750, "| Web Development Activity-Based Learning (ABL) Assignment")
+            self.drawRightString(558, 755, "Student: Yaswanth Avirneni (26000918, CSM-1)")
             self.setStrokeColor(colors.HexColor("#cbd5e1"))
             self.setLineWidth(0.75)
-            self.line(54, 742, 558, 742)
-
-            # Footer
-            self.setStrokeColor(colors.HexColor("#e2e8f0"))
-            self.setLineWidth(0.75)
-            self.line(54, 45, 558, 45)
-            self.setFont("Helvetica", 8)
-            self.setFillColor(colors.HexColor("#64748b"))
-            self.drawString(54, 32, "Student: Yaswanth | Roll No: 26000918 | Branch: CSE (CSM1)")
-            page_text = f"Page {self._pageNumber} of {page_count}"
-            self.drawRightString(558, 32, page_text)
+            self.line(54, 748, 558, 748)
+            
+        # Footer
+        self.setStrokeColor(colors.HexColor("#cbd5e1"))
+        self.setLineWidth(0.75)
+        self.line(54, 45, 558, 45)
+        self.setFont("Helvetica", 8)
+        self.setFillColor(colors.HexColor("#64748b"))
+        self.drawString(54, 32, "Deemed to be University u/s 3 of UGC Act, 1956  •  Department of CSE (AI & ML)")
+        page_str = f"Page {self._pageNumber} of {total_pages}"
+        self.drawRightString(558, 32, page_str)
         self.restoreState()
 
-def generate_pdf():
+def build_pdf():
     doc = SimpleDocTemplate(
         PDF_PATH,
         pagesize=letter,
@@ -73,352 +67,229 @@ def generate_pdf():
     styles = getSampleStyleSheet()
 
     # Custom styles
-    title_style = ParagraphStyle(
-        'DocTitle',
-        parent=styles['Normal'],
+    univ_head = ParagraphStyle(
+        'UnivHead',
         fontName='Helvetica-Bold',
-        fontSize=20,
-        leading=24,
-        textColor=colors.HexColor('#0f172a'),
-        alignment=1, # Center
-        spaceAfter=6
+        fontSize=15,
+        leading=18,
+        textColor=colors.HexColor('#0f2942'),
+        alignment=1
     )
-
-    inst_style = ParagraphStyle(
-        'InstHeader',
-        parent=styles['Normal'],
-        fontName='Helvetica-Bold',
-        fontSize=13,
-        leading=16,
-        textColor=colors.HexColor('#1e40af'),
-        alignment=1,
-        spaceAfter=3
-    )
-
-    sub_inst = ParagraphStyle(
-        'SubInst',
-        parent=styles['Normal'],
+    univ_sub = ParagraphStyle(
+        'UnivSub',
         fontName='Helvetica',
         fontSize=9,
         leading=12,
         textColor=colors.HexColor('#475569'),
-        alignment=1,
-        spaceAfter=15
+        alignment=1
     )
-
-    h1_style = ParagraphStyle(
-        'Heading1_Custom',
-        parent=styles['Normal'],
+    doc_title = ParagraphStyle(
+        'DocTitle',
         fontName='Helvetica-Bold',
-        fontSize=14,
-        leading=18,
-        textColor=colors.HexColor('#1e3a8a'),
-        spaceBefore=14,
-        spaceAfter=8,
-        keepWithNext=True
+        fontSize=18,
+        leading=22,
+        textColor=colors.HexColor('#1e40af'),
+        alignment=1,
+        spaceAfter=8
     )
-
+    h1_style = ParagraphStyle(
+        'H1Style',
+        fontName='Helvetica-Bold',
+        fontSize=13,
+        leading=16,
+        textColor=colors.HexColor('#0f2942'),
+        spaceBefore=14,
+        spaceAfter=6
+    )
     h2_style = ParagraphStyle(
-        'Heading2_Custom',
-        parent=styles['Normal'],
+        'H2Style',
         fontName='Helvetica-Bold',
         fontSize=11,
-        leading=15,
-        textColor=colors.HexColor('#0f172a'),
+        leading=14,
+        textColor=colors.HexColor('#1e40af'),
         spaceBefore=10,
-        spaceAfter=4,
-        keepWithNext=True
+        spaceAfter=4
     )
-
-    body_style = ParagraphStyle(
-        'Body_Custom',
-        parent=styles['Normal'],
+    body = ParagraphStyle(
+        'Body',
         fontName='Helvetica',
         fontSize=9,
-        leading=13.5,
+        leading=13,
         textColor=colors.HexColor('#1e293b'),
         spaceAfter=6
     )
-
-    code_style = ParagraphStyle(
-        'Code_Custom',
-        parent=styles['Normal'],
+    body_bold = ParagraphStyle(
+        'BodyBold',
+        fontName='Helvetica-Bold',
+        fontSize=9,
+        leading=13,
+        textColor=colors.HexColor('#0f172a')
+    )
+    code_snippet = ParagraphStyle(
+        'CodeSnippet',
         fontName='Courier',
         fontSize=7.5,
         leading=10,
-        textColor=colors.HexColor('#0f172a'),
-        backColor=colors.HexColor('#f8fafc'),
-        borderColor=colors.HexColor('#e2e8f0'),
-        borderWidth=1,
-        borderPadding=6,
-        spaceAfter=6
+        textColor=colors.HexColor('#0f172a')
     )
 
-    story = []
+    elements = []
 
-    # =========================================================================
-    # FRONT COVER / HEADER
-    # =========================================================================
-    story.append(Spacer(1, 10))
-    story.append(Paragraph("DR. RVR NRI INSTITUTE OF TECHNOLOGY", inst_style))
-    story.append(Paragraph("An Institution deemed to be University u/s 3 of UGC Act, 1956<br/>School of Computer Studies • Department of Computer Science & Engineering<br/>Pothavarappadu (V), Agiripalli (M), Vijayawada Rural, Eluru District, AP - 521212", sub_inst))
-    story.append(HRFlowable(width="100%", thickness=1.5, color=colors.HexColor('#1e40af'), spaceAfter=15))
+    # ================= COVER / HEADER =================
+    elements.append(Paragraph("Dr. RVR NRI INSTITUTE OF TECHNOLOGY", univ_head))
+    elements.append(Paragraph("An Institution deemed to be University u/s 3 of UGC Act, 1956", univ_sub))
+    elements.append(Paragraph("Sponsored by Sri Durga Malleswari Educational Society", univ_sub))
+    elements.append(Paragraph("Pothavarappadu (V), Agiripalli (M), Vijayawada Rural, Eluru District, Andhra Pradesh", univ_sub))
+    elements.append(Spacer(1, 10))
+    elements.append(HRFlowable(width="100%", thickness=1.5, color=colors.HexColor('#1e40af'), spaceAfter=14))
+    
+    elements.append(Paragraph("Web Development Activity-Based Learning (ABL)", doc_title))
+    elements.append(Paragraph("<b>Consolidated Academic Project & Implementation Report (Pure HTML5 & CSS3)</b>", ParagraphStyle('Sub', alignment=1, fontSize=10, textColor=colors.HexColor('#475569'), spaceAfter=14)))
 
-    story.append(Paragraph("ACTIVITY-BASED LEARNING (ABL) ASSIGNMENT REPORT", title_style))
-    story.append(Paragraph("<b>Course:</b> Web Development Lab (I B.Tech) &nbsp;|&nbsp; <b>Academic Session:</b> 2026-2027", ParagraphStyle('SubSub', parent=body_style, alignment=1, fontSize=10, textColor=colors.HexColor('#475569'))))
-    story.append(Paragraph("<b>Circular Ref:</b> Web Development ABL / Dussehra Holidays Assignment (15-10-2026)", ParagraphStyle('SubRef', parent=body_style, alignment=1, fontSize=9, textColor=colors.HexColor('#64748b'), spaceAfter=15)))
-
-    # Student Credentials Card Box
-    cred_data = [
-        [Paragraph("<b>Student Full Name:</b>", body_style), Paragraph("Yaswanth", body_style), Paragraph("<b>Academic Year / Sem:</b>", body_style), Paragraph("I B.Tech (2026-27)", body_style)],
-        [Paragraph("<b>Roll Number:</b>", body_style), Paragraph("<b>26000918</b>", body_style), Paragraph("<b>Branch / Discipline:</b>", body_style), Paragraph("CSE (Computer Science)", body_style)],
-        [Paragraph("<b>Class Section:</b>", body_style), Paragraph("<b>CSM1</b>", body_style), Paragraph("<b>Repository Name:</b>", body_style), Paragraph("WD-Activity-Based-Learning", body_style)]
+    # Student Info Table
+    info_data = [
+        [Paragraph("<b>Student Full Name:</b>", body), Paragraph("<b>Yaswanth Avirneni</b>", body_bold), Paragraph("<b>Academic Year:</b>", body), Paragraph("2026–2027 (I B.Tech)", body)],
+        [Paragraph("<b>Roll Number:</b>", body), Paragraph("<b>26000918</b>", body_bold), Paragraph("<b>Class Section:</b>", body), Paragraph("<b>CSM - 1</b>", body_bold)],
+        [Paragraph("<b>Department / Branch:</b>", body), Paragraph("CSE (Artificial Intelligence & ML)", body), Paragraph("<b>Course & Lab:</b>", body), Paragraph("Web Development (10 Marks)", body)],
+        [Paragraph("<b>GitHub Repository:</b>", body), Paragraph("<code>yaswanthcodm-sketch/WD-Activity-Based-Learning</code>", body), Paragraph("<b>Technology Stack:</b>", body), Paragraph("Pure Semantic HTML5 & Responsive CSS3", body)]
     ]
-    cred_table = Table(cred_data, colWidths=[120, 130, 120, 134])
-    cred_table.setStyle(TableStyle([
-        ('BACKGROUND', (0,0), (-1,-1), colors.HexColor('#f1f5f9')),
+    info_table = Table(info_data, colWidths=[120, 150, 110, 124])
+    info_table.setStyle(TableStyle([
+        ('BACKGROUND', (0,0), (-1,-1), colors.HexColor('#f8fafc')),
         ('BOX', (0,0), (-1,-1), 1, colors.HexColor('#cbd5e1')),
         ('INNERGRID', (0,0), (-1,-1), 0.5, colors.HexColor('#e2e8f0')),
-        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
-        ('TOPPADDING', (0,0), (-1,-1), 5),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 5),
-        ('LEFTPADDING', (0,0), (-1,-1), 8),
-        ('RIGHTPADDING', (0,0), (-1,-1), 8),
+        ('TOPPADDING', (0,0), (-1,-1), 6),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 6),
     ]))
-    story.append(cred_table)
-    story.append(Spacer(1, 15))
+    elements.append(info_table)
+    elements.append(Spacer(1, 14))
 
-    # Table of Selected 3 Case Studies
-    story.append(Paragraph("Prescribed Case Studies Selection Overview", h2_style))
-    summary_data = [
-        ["No.", "Case Study Title", "Core Web Technologies", "Folder Location"],
-        ["1", "Student Course Registration Portal", "HTML5, CSS3 Grid, DOM State, Credit Meter, Modal Receipt", "Case_01_Student_Course_Registration/"],
-        ["2", "Campus Event & Tech-Fest Hub (TechVyuha)", "Event Filtering, Dynamic Forms, Fee & Pass Generation", "Case_02_Campus_Event_Management/"],
-        ["3", "Online Book Store & Digital Central Library", "Live Search, Cart/Bag Management, 14-Day Due Dates", "Case_03_Online_Bookstore_and_Library/"]
+    # Abstract / Executive Overview
+    elements.append(Paragraph("Executive Overview of Selected Case Studies", h1_style))
+    elements.append(Paragraph("In accordance with the Dr. RVR NRI Institute of Technology Web Development curriculum, three distinct, feature-complete case studies have been selected, designed, and developed from the prescribed institutional syllabus. All three web applications strictly adhere to <b>100% Pure Semantic HTML5 and Modern CSS3</b> without external JavaScript libraries, ensuring high performance, pristine accessibility, and responsive fidelity.", body))
+
+    summary_table_data = [
+        [Paragraph("<b>S.No</b>", body_bold), Paragraph("<b>Syllabus Title</b>", body_bold), Paragraph("<b>Directory</b>", body_bold), Paragraph("<b>Key Architectural Concepts</b>", body_bold)],
+        [Paragraph("01", body), Paragraph("<b>Case 4: Student Academic Dashboard</b>", body), Paragraph("<code>academic-dashboard/</code>", body), Paragraph("Sidebar layout, attendance progress bars, tabular semester grades, KPI metric cards, examination schedule, notice board.", body)],
+        [Paragraph("02", body), Paragraph("<b>Case 3: Online Learning Platform Interface</b>", body), Paragraph("<code>elearning-platform/</code>", body), Paragraph("Course discovery catalog, video lesson thumbnails, instructor credentials, learning objectives, pure CSS :target modal enrollment.", body)],
+        [Paragraph("03", body), Paragraph("<b>Case 11: Hospital & Healthcare Services</b>", body), Paragraph("<code>healthcare-portal/</code>", body), Paragraph("24/7 trauma emergency bar, multi-specialty clinical departments, doctors OPD timetable, visiting hours matrix, accessible appointment request form.", body)]
     ]
-    summary_table = Table(summary_data, colWidths=[26, 175, 175, 128])
+    summary_table = Table(summary_table_data, colWidths=[35, 150, 110, 209])
     summary_table.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#1e40af')),
         ('TEXTCOLOR', (0,0), (-1,0), colors.white),
-        ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0,0), (-1,0), 8.5),
-        ('BOTTOMPADDING', (0,0), (-1,0), 6),
-        ('TOPPADDING', (0,0), (-1,0), 6),
-        ('BACKGROUND', (0,1), (-1,-1), colors.HexColor('#ffffff')),
-        ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#cbd5e1')),
-        ('FONTSIZE', (0,1), (-1,-1), 8),
-        ('VALIGN', (0,0), (-1,-1), 'TOP'),
-        ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, colors.HexColor('#f8fafc')])
-    ]))
-    story.append(summary_table)
-    story.append(Spacer(1, 15))
-
-    # Assignment Objectives
-    story.append(Paragraph("<b>Assignment Objective & Scope:</b>", h2_style))
-    story.append(Paragraph(
-        "As communicated in the institutional circular dated 15-10-2026, students are instructed to design and build fully working web applications "
-        "covering client-side architecture. Each solution incorporates semantic HTML5, responsive CSS3 layouts, interactive JavaScript DOM manipulations, "
-        "form validation, and downloadable/printable confirmation receipts tailored for authentic university academic operations.",
-        body_style
-    ))
-
-    story.append(PageBreak())
-
-    # =========================================================================
-    # CASE STUDY 1
-    # =========================================================================
-    story.append(Paragraph("Case Study 1: Student Course Registration Portal", h1_style))
-    story.append(Paragraph("<b>Directory:</b> <code>Case_01_Student_Course_Registration/</code> &nbsp;|&nbsp; <b>Primary Files:</b> <code>index.html</code>, <code>style.css</code>, <code>app.js</code>", ParagraphStyle('SubSub2', parent=body_style, fontSize=8, textColor=colors.HexColor('#64748b'))))
-    story.append(HRFlowable(width="100%", thickness=0.8, color=colors.HexColor('#cbd5e1'), spaceAfter=8))
-
-    story.append(Paragraph("<b>1. Problem Statement & Academic Context:</b>", h2_style))
-    story.append(Paragraph(
-        "In university credit-based academic systems (such as CBCS at Dr. RVR NRIIT), undergraduate students in the School of Computer Studies "
-        "must enroll in courses for the upcoming semester while strictly adhering to institutional workload limitations (Minimum 16 credits, "
-        "Maximum 24 credits). The goal of this case study is to provide an interactive, intuitive course enrollment portal that calculates real-time "
-        "credit points, dynamically assesses tuition/lab dues, verifies prerequisites, and provides a formal semester registration slip.",
-        body_style
-    ))
-
-    story.append(Paragraph("<b>2. Key Functional & Technical Implementations:</b>", h2_style))
-    story.append(Paragraph(
-        "• <b>Live Credit Counter & Progress Bar:</b> Dynamic progress calculation with automated alerts preventing enrollment exceeding 24 credits.<br/>"
-        "• <b>Category Filtering:</b> Instant client-side filtering between Core Subjects, Professional Electives, and Laboratory Courses.<br/>"
-        "• <b>Fee Breakdown Calculation:</b> Real-time computation of tuition fees and laboratory consumables based on selected courses.<br/>"
-        "• <b>Official Registration Slip Modal:</b> Generation of a formal digital slip with Roll No: <b>26000918</b>, Student Name: <b>Yaswanth</b>, and Section: <b>CSM1</b> with print capability.",
-        body_style
-    ))
-
-    story.append(Spacer(1, 4))
-    story.append(Paragraph("<b>3. Visual Execution Screenshots:</b>", h2_style))
-
-    # Screenshot 1: Main Portal
-    img_cs1_main = os.path.join(SCREENSHOTS_DIR, "case_01_main_portal.png")
-    if os.path.exists(img_cs1_main):
-        story.append(RLImage(img_cs1_main, width=500, height=270))
-        story.append(Paragraph("<i>Figure 1.1: Case Study 1 — Course Catalog, Category Filter & Live Credit Workload Meter</i>", ParagraphStyle('Cap', parent=body_style, alignment=1, fontSize=7.5, textColor=colors.HexColor('#64748b'))))
-
-    story.append(Spacer(1, 6))
-
-    # Screenshot 2: Modal
-    img_cs1_modal = os.path.join(SCREENSHOTS_DIR, "case_01_modal_receipt.png")
-    if os.path.exists(img_cs1_modal):
-        story.append(RLImage(img_cs1_modal, width=460, height=250))
-        story.append(Paragraph("<i>Figure 1.2: Case Study 1 — Verified Registration Confirmation Slip Modal Dialog</i>", ParagraphStyle('Cap2', parent=body_style, alignment=1, fontSize=7.5, textColor=colors.HexColor('#64748b'))))
-
-    story.append(PageBreak())
-
-    # =========================================================================
-    # CASE STUDY 2
-    # =========================================================================
-    story.append(Paragraph("Case Study 2: Campus Event & Tech-Fest Hub (TechVyuha '26)", h1_style))
-    story.append(Paragraph("<b>Directory:</b> <code>Case_02_Campus_Event_Management/</code> &nbsp;|&nbsp; <b>Primary Files:</b> <code>index.html</code>, <code>style.css</code>, <code>app.js</code>", ParagraphStyle('SubSub3', parent=body_style, fontSize=8, textColor=colors.HexColor('#64748b'))))
-    story.append(HRFlowable(width="100%", thickness=0.8, color=colors.HexColor('#cbd5e1'), spaceAfter=8))
-
-    story.append(Paragraph("<b>1. Problem Statement & Functional Goals:</b>", h2_style))
-    story.append(Paragraph(
-        "Annual technical symposiums like <i>TechVyuha '26</i> require a high-throughput event discovery and registration platform where students can "
-        "explore technical hackathons, speed coding contests, paper presentations, and gaming arenas. The platform must handle dynamic team formation, "
-        "track seat availability in real time, collect participant credentials, and issue verified digital event passes with unique pass IDs.",
-        body_style
-    ))
-
-    story.append(Paragraph("<b>2. Key Technical Implementations:</b>", h2_style))
-    story.append(Paragraph(
-        "• <b>Live Multi-Attribute Filtering & Search:</b> Instant real-time search by keywords, venues, and category chips.<br/>"
-        "• <b>Adaptive Team Member Generation:</b> Dynamically generates team member input rows according to each event's maximum team size.<br/>"
-        "• <b>Seat Inventory Management:</b> Updates available slot tallies on successful registration.<br/>"
-        "• <b>Digital E-Ticket Pass:</b> Renders an official tech-fest pass with QR-code placeholder, unique pass ID (e.g. <code>NRIIT-TV26-8918</code>), venue timings, and candidate verification badge.",
-        body_style
-    ))
-
-    story.append(Spacer(1, 4))
-    story.append(Paragraph("<b>3. Visual Execution Screenshots:</b>", h2_style))
-
-    img_cs2_main = os.path.join(SCREENSHOTS_DIR, "case_02_techfest_portal.png")
-    if os.path.exists(img_cs2_main):
-        story.append(RLImage(img_cs2_main, width=500, height=270))
-        story.append(Paragraph("<i>Figure 2.1: Case Study 2 — TechVyuha '26 Event Hub with Live Filters and Prize Badges</i>", ParagraphStyle('Cap3', parent=body_style, alignment=1, fontSize=7.5, textColor=colors.HexColor('#64748b'))))
-
-    story.append(Spacer(1, 6))
-
-    img_cs2_pass = os.path.join(SCREENSHOTS_DIR, "case_02_digital_pass.png")
-    if os.path.exists(img_cs2_pass):
-        story.append(RLImage(img_cs2_pass, width=440, height=255))
-        story.append(Paragraph("<i>Figure 2.2: Case Study 2 — Generated Verified Digital Entry Pass with Unique Pass ID & QR</i>", ParagraphStyle('Cap4', parent=body_style, alignment=1, fontSize=7.5, textColor=colors.HexColor('#64748b'))))
-
-    story.append(PageBreak())
-
-    # =========================================================================
-    # CASE STUDY 3
-    # =========================================================================
-    story.append(Paragraph("Case Study 3: Online Book Store & Digital Library Catalog", h1_style))
-    story.append(Paragraph("<b>Directory:</b> <code>Case_03_Online_Bookstore_and_Library/</code> &nbsp;|&nbsp; <b>Primary Files:</b> <code>index.html</code>, <code>style.css</code>, <code>app.js</code>", ParagraphStyle('SubSub4', parent=body_style, fontSize=8, textColor=colors.HexColor('#64748b'))))
-    story.append(HRFlowable(width="100%", thickness=0.8, color=colors.HexColor('#cbd5e1'), spaceAfter=8))
-
-    story.append(Paragraph("<b>1. Problem Statement & Library Workflow:</b>", h2_style))
-    story.append(Paragraph(
-        "Academic institutions maintain extensive inventories of technical reference books across diverse engineering disciplines. "
-        "The Dr. RVR NRIIT Central E-Library application enables students to browse textbooks, check physical shelf rack locations, "
-        "manage a borrowing cart (Reading Bag) constrained to 3 books, enforce 14-day return due dates, and track active loans.",
-        body_style
-    ))
-
-    story.append(Paragraph("<b>2. Key Technical Implementations:</b>", h2_style))
-    story.append(Paragraph(
-        "• <b>Real-time Book Search & Discipline Chips:</b> Search catalog by book title, author, or ISBN.<br/>"
-        "• <b>Reading Bag Drawer:</b> Sliding side drawer managing borrowed volumes with capacity validation (Max 3 books).<br/>"
-        "• <b>Automated Due Date Calculation:</b> Computes exact 14-day return deadlines and outlines late fee regulations.<br/>"
-        "• <b>Circulation Receipt & Active Loan Tracker:</b> Generates library borrowing receipts and allows one-click book returns.",
-        body_style
-    ))
-
-    story.append(Spacer(1, 4))
-    story.append(Paragraph("<b>3. Visual Execution Screenshots:</b>", h2_style))
-
-    img_cs3_main = os.path.join(SCREENSHOTS_DIR, "case_03_library_portal.png")
-    if os.path.exists(img_cs3_main):
-        story.append(RLImage(img_cs3_main, width=500, height=270))
-        story.append(Paragraph("<i>Figure 3.1: Case Study 3 — Central E-Library Catalog with Shelf Locations & Discipline Chips</i>", ParagraphStyle('Cap5', parent=body_style, alignment=1, fontSize=7.5, textColor=colors.HexColor('#64748b'))))
-
-    story.append(Spacer(1, 6))
-
-    img_cs3_slip = os.path.join(SCREENSHOTS_DIR, "case_03_circulation_slip.png")
-    if os.path.exists(img_cs3_slip):
-        story.append(RLImage(img_cs3_slip, width=440, height=255))
-        story.append(Paragraph("<i>Figure 3.2: Case Study 3 — Official 14-Day Library Circulation Receipt Dialog</i>", ParagraphStyle('Cap6', parent=body_style, alignment=1, fontSize=7.5, textColor=colors.HexColor('#64748b'))))
-
-    story.append(PageBreak())
-
-    # =========================================================================
-    # REPOSITORY STRUCTURE & SUBMISSION DETAILS
-    # =========================================================================
-    story.append(Paragraph("Repository Organisation & GitHub Submission Guide", h1_style))
-    story.append(HRFlowable(width="100%", thickness=0.8, color=colors.HexColor('#cbd5e1'), spaceAfter=10))
-
-    story.append(Paragraph("<b>GitHub Repository Name:</b> <code>WD-Activity-Based-Learning</code>", h2_style))
-    story.append(Paragraph(
-        "In strict compliance with <b>Instruction #3</b> of the circular, all code, screenshots, and this consolidated report "
-        "are organized inside a clean GitHub repository. The folder structure is laid out as follows:",
-        body_style
-    ))
-
-    tree_text = (
-        "WD-Activity-Based-Learning/\n"
-        "├── Case_01_Student_Course_Registration/\n"
-        "│   ├── index.html        (Semantic layout, filters, course grid, summary & modal slip)\n"
-        "│   ├── style.css         (Custom styling, responsive CSS Grid/Flexbox, cards & badges)\n"
-        "│   └── app.js            (Dynamic rendering, credit limit validation, fee calculation)\n"
-        "├── Case_02_Campus_Event_Management/\n"
-        "│   ├── index.html        (Hero banner, event arenas, search bar, registration modal)\n"
-        "│   ├── style.css         (Tech-fest aesthetic, event cards, digital pass styling)\n"
-        "│   └── app.js            (Filtering, dynamic team fields, unique Pass ID generation)\n"
-        "├── Case_03_Online_Bookstore_and_Library/\n"
-        "│   ├── index.html        (Textbook catalog, reading bag drawer, circulation receipt)\n"
-        "│   ├── style.css         (Academic design, book spine covers, drawer transitions)\n"
-        "│   └── app.js            (Catalog search, 3-book limit, 14-day due date computation)\n"
-        "├── screenshots/          (High-resolution browser execution screenshots)\n"
-        "├── reports/\n"
-        "│   └── WD_ABL_Consolidated_Report.pdf  (Official consolidated submission PDF)\n"
-        "└── README.md             (Student details, selected case study titles & setup guide)"
-    )
-    story.append(Paragraph(tree_text.replace("\n", "<br/>").replace(" ", "&nbsp;"), code_style))
-
-    story.append(Spacer(1, 10))
-    story.append(Paragraph("<b>Student Declaration & Verification:</b>", h2_style))
-    story.append(Paragraph(
-        "I hereby declare that the three case studies presented in this report and uploaded to the GitHub repository "
-        "<code>WD-Activity-Based-Learning</code> were designed and developed independently by me as part of the Web Development "
-        "Activity-Based Learning (ABL) course assignment during the Dussehra vacation. All code, design structures, and logic "
-        "are authentic and ready for live demonstration before the faculty evaluation committee.",
-        body_style
-    ))
-
-    story.append(Spacer(1, 15))
-    sig_data = [
-        [Paragraph("<b>Student Signature:</b>", body_style), Paragraph("<b>Faculty / Mentor Evaluation:</b>", body_style)],
-        [Paragraph("<i>(Yaswanth)</i><br/>Roll No: <b>26000918</b><br/>Section: <b>CSM1</b> | Branch: <b>CSE</b><br/>Dr. RVR NRI Institute of Technology", body_style),
-         Paragraph("Marks Awarded: <b>____ / 10 Marks</b><br/>Signature: _______________________<br/>Date: ___________________________", body_style)]
-    ]
-    sig_table = Table(sig_data, colWidths=[250, 254])
-    sig_table.setStyle(TableStyle([
         ('BOX', (0,0), (-1,-1), 1, colors.HexColor('#cbd5e1')),
         ('INNERGRID', (0,0), (-1,-1), 0.5, colors.HexColor('#e2e8f0')),
-        ('BACKGROUND', (0,0), (-1,-1), colors.HexColor('#f8fafc')),
+        ('TOPPADDING', (0,0), (-1,-1), 6),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 6),
+    ]))
+    elements.append(summary_table)
+
+    elements.append(PageBreak())
+
+    # ================= CASE STUDY 1: STUDENT ACADEMIC DASHBOARD =================
+    elements.append(Paragraph("1. Case Study 4: Student Academic Dashboard", h1_style))
+    elements.append(Paragraph("<b>Directory:</b> <code>academic-dashboard/</code> | <b>Files:</b> <code>index.html</code>, <code>style.css</code>", h2_style))
+    elements.append(Paragraph("<b>Problem Definition & Scope:</b> Design an administrative student dashboard displaying comprehensive profile metadata, subject-wise attendance percentages with eligibility thresholds, semester examination results, upcoming exam timetables, and departmental notices using CSS Flexbox, CSS Grid, custom progress bars, and a modern sidebar layout.", body))
+
+    elements.append(Paragraph("<b>Key Technical Capabilities Implemented:</b>", body_bold))
+    elements.append(Paragraph("• <b>Fixed Sidebar Layout:</b> Modern navigation sidebar containing the university badge, student avatar (YA), roll number (26000918), section (CSM-1), and smooth-scroll anchor links.<br/>"
+                              "• <b>KPI Metrics Cards:</b> 4 distinct analytical summary boxes showcasing Registered Credits (21 Cr), Attendance (88.5%), SGPA (9.36), and upcoming Mid-Term II alerts.<br/>"
+                              "• <b>Dynamic Attendance Progress Bars:</b> CSS progress bars with conditional color fills (safe green vs warning amber) and session statistics for all enrolled subjects.<br/>"
+                              "• <b>Structured Semester Grade Table:</b> Responsive tabular data presentation showing course codes, internal (40), external (60), total marks, grade points, and letter grades.<br/>"
+                              "• <b>Examination Schedule & Circular Notice Board:</b> Date badge cards for mid-term exams and priority-coded urgent department notifications.", body))
+
+    elements.append(Spacer(1, 6))
+    dash_img_path = os.path.join(SCREENSHOTS_DIR, "academic_dashboard_preview.png")
+    if os.path.exists(dash_img_path):
+        elements.append(Paragraph("<b>Interface Render Screenshot (Academic Dashboard):</b>", body_bold))
+        elements.append(Image(dash_img_path, width=504, height=315))
+    
+    elements.append(PageBreak())
+
+    # ================= CASE STUDY 2: ONLINE LEARNING PLATFORM =================
+    elements.append(Paragraph("2. Case Study 3: Online Learning Platform Interface", h1_style))
+    elements.append(Paragraph("<b>Directory:</b> <code>elearning-platform/</code> | <b>Files:</b> <code>index.html</code>, <code>style.css</code>", h2_style))
+    elements.append(Paragraph("<b>Problem Definition & Scope:</b> Develop a full-featured e-learning web interface containing course disciplines, video lesson thumbnails with playback indicators, verified instructor profiles, structured learning objectives, and responsive enrollment cards with active learning progress indicators.", body))
+
+    elements.append(Paragraph("<b>Key Technical Capabilities Implemented:</b>", body_bold))
+    elements.append(Paragraph("• <b>Active Learning Track Hero Card:</b> Real-time session tracker highlighting current lesson progress (68% complete, 18/26 lessons) with progress indicators.<br/>"
+                              "• <b>Video Lesson Cards:</b> Rich thumbnail cards with gradient backdrops, play trigger overlays, duration badges (e.g. 18h 45m), and tech-stack chips.<br/>"
+                              "• <b>Structured Learning Objectives:</b> Dedicated learning outcomes breakdown for each course (NumPy, Scikit-Learn, PyTorch, Docker, CSS Grid).<br/>"
+                              "• <b>Pure CSS Modal Interactivity:</b> Implemented enrollment syllabus popups and enrollment confirmation dialogs using pure CSS <code>:target</code> pseudo-class selectors with zero JavaScript dependency.<br/>"
+                              "• <b>Instructor Directory & Star Ratings:</b> Faculty profiles with verified designations, student enrollments, and academic ratings.", body))
+
+    elements.append(Spacer(1, 6))
+    elearn_img_path = os.path.join(SCREENSHOTS_DIR, "elearning_platform_preview.png")
+    if os.path.exists(elearn_img_path):
+        elements.append(Paragraph("<b>Interface Render Screenshot (Online Learning Platform):</b>", body_bold))
+        elements.append(Image(elearn_img_path, width=504, height=315))
+
+    elements.append(PageBreak())
+
+    # ================= CASE STUDY 3: HOSPITAL & HEALTHCARE SERVICES =================
+    elements.append(Paragraph("3. Case Study 11: Hospital and Healthcare Services Website", h1_style))
+    elements.append(Paragraph("<b>Directory:</b> <code>healthcare-portal/</code> | <b>Files:</b> <code>index.html</code>, <code>style.css</code>", h2_style))
+    elements.append(Paragraph("<b>Problem Definition & Scope:</b> Create a tertiary hospital web portal presenting clinical departments, specialist physician directories, diagnostic facilities, visiting hours regulations, 24/7 trauma emergency contact details, and an accessible appointment request form.", body))
+
+    elements.append(Paragraph("<b>Key Technical Capabilities Implemented:</b>", body_bold))
+    elements.append(Paragraph("• <b>24/7 Emergency Trauma Bar:</b> Urgent red alert header with pulsating status dot and emergency hotline (9640334422 / 1800-NRIIT-CARE).<br/>"
+                              "• <b>Clinical Departments Grid:</b> Comprehensive medical department cards (Cardiology, Neurology, Orthopedics, Pediatrics, Pulmonology, Intensive Care).<br/>"
+                              "• <b>Doctor Specialist Directory:</b> Detailed consultant physician profiles with credentials, OPD suite numbers, consultation schedules, and availability tags.<br/>"
+                              "• <b>Inpatient Visiting Hours Matrix:</b> Structured table displaying ward-specific visiting windows, attendant limits, and visitor pass regulations.<br/>"
+                              "• <b>Accessible Appointment Request Form:</b> Semantic HTML form with accessible <code>&lt;label&gt;</code> tags, pattern-matched phone number inputs, required selects, date pickers, priority radios, and pure CSS confirmation receipt.", body))
+
+    elements.append(Spacer(1, 6))
+    health_img_path = os.path.join(SCREENSHOTS_DIR, "healthcare_portal_preview.png")
+    if os.path.exists(health_img_path):
+        elements.append(Paragraph("<b>Interface Render Screenshot (Hospital & Healthcare Services):</b>", body_bold))
+        elements.append(Image(health_img_path, width=504, height=315))
+
+    elements.append(PageBreak())
+
+    # ================= EVALUATION & VERIFICATION =================
+    elements.append(Paragraph("4. Academic Evaluation Rubric & Faculty Assessment Sheet", h1_style))
+    elements.append(Paragraph("Web Development Activity-Based Learning Evaluation (Total: 10 Marks)", body_bold))
+    
+    rubric_data = [
+        [Paragraph("<b>Evaluation Parameter</b>", body_bold), Paragraph("<b>Max Marks</b>", body_bold), Paragraph("<b>Implementation Standard Achieved</b>", body_bold), Paragraph("<b>Awarded</b>", body_bold)],
+        [Paragraph("<b>Semantic HTML5 Structure</b>", body), Paragraph("2.5", body), Paragraph("Extensive use of semantic tags (<code>&lt;header&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;table&gt;</code>, <code>&lt;form&gt;</code>).", body), Paragraph("___ / 2.5", body)],
+        [Paragraph("<b>CSS3 Styling, Flexbox & Grid</b>", body), Paragraph("2.5", body), Paragraph("Modern CSS custom properties, responsive multi-column layouts, smooth card hover transitions, and progress bar animations.", body), Paragraph("___ / 2.5", body)],
+        [Paragraph("<b>Responsive UI & Accessibility</b>", body), Paragraph("2.5", body), Paragraph("Fluid media queries across mobile, tablet, and desktop viewports; accessible form controls and clear visual hierarchy.", body), Paragraph("___ / 2.5", body)],
+        [Paragraph("<b>Functional Completeness & Case Coverage</b>", body), Paragraph("2.5", body), Paragraph("Exact alignment with Case Studies 4, 3, and 11 from the Dr. RVR NRIIT curriculum sheet, documentation, and repository.", body), Paragraph("___ / 2.5", body)],
+        [Paragraph("<b>Total Score</b>", body_bold), Paragraph("<b>10.0</b>", body_bold), Paragraph("<b>Comprehensive Web Development Activity Submission</b>", body_bold), Paragraph("<b>___ / 10</b>", body_bold)]
+    ]
+    rubric_table = Table(rubric_data, colWidths=[130, 60, 240, 74])
+    rubric_table.setStyle(TableStyle([
+        ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#0f2942')),
+        ('TEXTCOLOR', (0,0), (-1,0), colors.white),
+        ('BOX', (0,0), (-1,-1), 1, colors.HexColor('#cbd5e1')),
+        ('INNERGRID', (0,0), (-1,-1), 0.5, colors.HexColor('#e2e8f0')),
         ('TOPPADDING', (0,0), (-1,-1), 8),
         ('BOTTOMPADDING', (0,0), (-1,-1), 8),
-        ('LEFTPADDING', (0,0), (-1,-1), 10),
-        ('RIGHTPADDING', (0,0), (-1,-1), 10),
     ]))
-    story.append(sig_table)
+    elements.append(rubric_table)
 
-    doc.build(story, canvasmaker=NumberedCanvas)
-    print("Consolidated PDF generated at:", PDF_PATH)
+    elements.append(Spacer(1, 35))
+    
+    # Signature Section
+    sig_data = [
+        [Paragraph("<b>Student Signature:</b><br/><br/>_______________________<br/><b>Yaswanth Avirneni</b><br/>Roll No: 26000918<br/>Section: CSM - 1<br/>CSE (AI & ML), NRIIT", body),
+         Paragraph("<b>Evaluator / Faculty Signature:</b><br/><br/>_______________________<br/><b>Faculty of Web Development</b><br/>Department of Computer Science & Engineering<br/>Dr. RVR NRI Institute of Technology", body)]
+    ]
+    sig_table = Table(sig_data, colWidths=[252, 252])
+    sig_table.setStyle(TableStyle([
+        ('BOX', (0,0), (-1,-1), 1, colors.HexColor('#cbd5e1')),
+        ('BACKGROUND', (0,0), (-1,-1), colors.HexColor('#f8fafc')),
+        ('TOPPADDING', (0,0), (-1,-1), 12),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 12),
+        ('LEFTPADDING', (0,0), (-1,-1), 16),
+        ('RIGHTPADDING', (0,0), (-1,-1), 16),
+    ]))
+    elements.append(sig_table)
 
-    # Also copy to root for ease of access
-    import shutil
-    shutil.copyfile(PDF_PATH, ROOT_PDF_PATH)
-    print("Copied to root:", ROOT_PDF_PATH)
+    doc.build(elements, canvasmaker=NumberedCanvas)
+    print("PDF Successfully Generated:", PDF_PATH)
 
 if __name__ == "__main__":
-    generate_pdf()
+    build_pdf()
