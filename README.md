@@ -69,7 +69,6 @@ WD-Activity-Based-Learning/
 │   ├── elearning_platform_preview.png
 │   └── healthcare_portal_preview.png
 │
-├── Consolidated_Report.pdf           <-- Complete Formal Academic Submission Document
 └── README.md                         <-- Project Documentation & Student Details
 ```
 
