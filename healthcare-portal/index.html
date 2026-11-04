@@ -3,493 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NRIIT Care - Hospital & Healthcare Services</title>
+    <title>NRIIT Care Hospital & Healthcare Services</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Emergency Helpline Header -->
+    <!-- Emergency Banner -->
     <div class="emergency-bar">
-        <div class="emergency-inner">
-            <span class="pulse-dot"></span>
-            <p><strong>🚑 24/7 EMERGENCY & TRAUMA HELPLINE:</strong> Call <strong>+91 9640334422</strong> or <strong>1800-NRIIT-CARE</strong> | Free Campus Ambulance Support</p>
-            <a href="#appointment" class="quick-call-btn">Emergency OPD Desk</a>
-        </div>
+        <span>🚑 24/7 Emergency & Trauma Helpline: <strong>+91 9640334422</strong> | NRIIT Campus Health Center</span>
     </div>
 
-    <!-- Main Navigation Bar -->
-    <header class="hospital-nav">
-        <div class="nav-container">
-            <div class="hospital-brand">
-                <span class="med-cross">🏥</span>
-                <div>
-                    <h1>NRIIT CARE HOSPITAL</h1>
-                    <p class="brand-sub">Super-Speciality Healthcare & Medical Research Center</p>
-                </div>
-            </div>
-
-            <nav class="nav-links">
-                <a href="#departments">Departments</a>
-                <a href="#doctors">Specialists</a>
-                <a href="#facilities">Facilities</a>
-                <a href="#visiting">Visiting Hours</a>
-                <a href="#appointment" class="btn-book">Book Appointment</a>
-            </nav>
-        </div>
+    <!-- Header -->
+    <header class="header">
+        <h1>NRIIT Care Hospital</h1>
+        <p>Affiliated with Dr. RVR NRI Institute of Technology • Case Study 11</p>
     </header>
 
-    <!-- Hero Showcase Section -->
-    <section class="hero-section">
-        <div class="hero-container">
-            <div class="hero-text">
-                <span class="badge-accredited">✓ NABH & NABL Accredited Center</span>
-                <h2>Compassionate Healthcare Backed by Modern Medical Science</h2>
-                <p>Providing 24/7 emergency response, multi-specialty clinical care, advanced diagnostics, and outpatient consultations at Dr. RVR NRI Institute of Technology Healthcare Campus.</p>
-                <div class="hero-highlights">
-                    <div class="hl-item">
-                        <span class="hl-num">24/7</span>
-                        <span class="hl-desc">Emergency & Trauma Care</span>
-                    </div>
-                    <div class="hl-item">
-                        <span class="hl-num">45+</span>
-                        <span class="hl-desc">Specialist Physicians</span>
-                    </div>
-                    <div class="hl-item">
-                        <span class="hl-num">100%</span>
-                        <span class="hl-desc">ICU Bed Availability</span>
-                    </div>
+    <div class="container">
+        <!-- Clinical Departments -->
+        <div class="card">
+            <h2>Specialized Medical Departments</h2>
+            <div class="dept-grid">
+                <div class="dept-box">
+                    <h3>❤️ Cardiology</h3>
+                    <p>Coronary care, ECG, echo-cardiography, and heart health checkups.</p>
+                    <small>Head: Dr. A. K. Varma, MD, DM</small>
                 </div>
-            </div>
-
-            <div class="hero-card">
-                <h3>Quick Patient Access</h3>
-                <p>Choose an immediate healthcare service or locate your department:</p>
-                <ul class="quick-links-list">
-                    <li><a href="#appointment">📋 Schedule Doctor Appointment</a></li>
-                    <li><a href="#doctors">👨‍⚕️ View Consultant OPD Timings</a></li>
-                    <li><a href="#visiting">🕒 Inpatient Visiting Hours Guidelines</a></li>
-                    <li><a href="#facilities">🔬 Diagnostic Labs & Radiology Services</a></li>
-                </ul>
-                <div class="campus-address">
-                    <p>📍 <strong>Location:</strong> NRIIT Medical Campus, Pothavarappadu (V), Agiripalli (M), Eluru Dist.</p>
+                <div class="dept-box">
+                    <h3>🧠 Neurology</h3>
+                    <p>Diagnosis and care for neurological disorders, epilepsy, and stroke.</p>
+                    <small>Head: Dr. M. Sujatha, MS, MCh</small>
+                </div>
+                <div class="dept-box">
+                    <h3>🦴 Orthopedics</h3>
+                    <p>Joint care, fracture repair, bone health, and sports injury treatments.</p>
+                    <small>Head: Dr. K. Rajesh, MS (Ortho)</small>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Medical Departments Section -->
-    <section class="section" id="departments">
-        <div class="section-container">
-            <div class="section-title-wrap">
-                <span class="section-tag">SPECIALIZED CLINICAL CARE</span>
-                <h2>Medical & Surgical Departments</h2>
-                <p>Comprehensive tertiary healthcare across advanced clinical disciplines.</p>
-            </div>
-
-            <div class="departments-grid">
-                <div class="dept-card">
-                    <div class="dept-icon icon-cardio">❤️</div>
-                    <h3>Cardiology & Cardiac Surgery</h3>
-                    <p>State-of-the-art Cath Lab, coronary angioplasty, pacemaker implantation, and pediatric cardiac diagnostics.</p>
-                    <span class="dept-lead">Lead: Dr. A. K. Varma, MD, DM (Cardio)</span>
-                </div>
-
-                <div class="dept-card">
-                    <div class="dept-icon icon-neuro">🧠</div>
-                    <h3>Neurology & Neurosurgery</h3>
-                    <p>Comprehensive care for stroke intervention, epilepsy management, spine surgeries, and EEG/EMG testing.</p>
-                    <span class="dept-lead">Lead: Dr. M. Sujatha, MS, MCh (Neuro)</span>
-                </div>
-
-                <div class="dept-card">
-                    <div class="dept-icon icon-ortho">🦴</div>
-                    <h3>Orthopedics & Joint Replacement</h3>
-                    <p>Computer-navigated knee and hip arthroplasty, sports injury rehabilitation, and trauma fracture repair.</p>
-                    <span class="dept-lead">Lead: Dr. K. Rajesh, MS (Ortho)</span>
-                </div>
-
-                <div class="dept-card">
-                    <div class="dept-icon icon-pedia">👶</div>
-                    <h3>Pediatrics & Neonatology</h3>
-                    <p>Level-III NICU care for premature infants, childhood vaccination schedules, and pediatric intensive care.</p>
-                    <span class="dept-lead">Lead: Dr. P. Sravanthi, MD (Pediatrics)</span>
-                </div>
-
-                <div class="dept-card">
-                    <div class="dept-icon icon-pulmo">🫁</div>
-                    <h3>Pulmonology & Respiratory Care</h3>
-                    <p>Bronchoscopy, sleep apnea evaluation, pulmonary function testing (PFT), and chronic asthma management.</p>
-                    <span class="dept-lead">Lead: Dr. B. Sudhakar, MD (Pulmonology)</span>
-                </div>
-
-                <div class="dept-card">
-                    <div class="dept-icon icon-er">🚨</div>
-                    <h3>Emergency & Critical Care (ICU)</h3>
-                    <p>Dedicated 20-bed multi-disciplinary intensive care unit with advanced mechanical ventilation and dialysis.</p>
-                    <span class="dept-lead">Lead: Dr. G. Srinivas, MD (Anesthesia & CC)</span>
-                </div>
-            </div>
+        <!-- Inpatient Visiting Hours Table -->
+        <div class="card">
+            <h2>Inpatient Visiting Hours & Rules</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Hospital Ward</th>
+                        <th>Morning Hours</th>
+                        <th>Evening Hours</th>
+                        <th>Visitor Limit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>General Wards</td>
+                        <td>11:00 AM - 12:30 PM</td>
+                        <td>04:30 PM - 07:00 PM</td>
+                        <td>2 Visitors</td>
+                    </tr>
+                    <tr>
+                        <td>Intensive Care Unit (ICU)</td>
+                        <td>11:00 AM - 11:30 AM</td>
+                        <td>05:00 PM - 05:30 PM</td>
+                        <td>1 Relative</td>
+                    </tr>
+                    <tr>
+                        <td>Pediatric Ward</td>
+                        <td>Parents Allowed 24 Hours</td>
+                        <td>04:00 PM - 06:00 PM</td>
+                        <td>Parents + 1 Visitor</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </section>
 
-    <!-- Doctors & Specialists Directory -->
-    <section class="section bg-light" id="doctors">
-        <div class="section-container">
-            <div class="section-title-wrap">
-                <span class="section-tag">MEDICAL EXPERTS</span>
-                <h2>Consultant Doctors & OPD Schedules</h2>
-                <p>Experienced clinicians dedicated to personalized patient diagnostics and recovery.</p>
-            </div>
-
-            <div class="doctors-grid">
-                <article class="doctor-card">
-                    <div class="doc-avatar-box doc-blue">
-                        <span class="doc-initials">AV</span>
-                        <span class="avail-tag">● Available Today</span>
-                    </div>
-                    <div class="doc-body">
-                        <h3>Dr. A. K. Varma</h3>
-                        <p class="doc-desig">Chief Senior Cardiologist</p>
-                        <p class="doc-qual">MBBS, MD (Gen Med), DM (Cardiology), FACC</p>
-                        <div class="opd-timings">
-                            <span>🕒 OPD Hours: 09:00 AM – 01:00 PM (Mon–Sat)</span>
-                            <span>📍 Room: OPD Suite 104, 1st Floor</span>
-                        </div>
-                        <a href="#appointment" class="btn-book-doc">Request Appointment</a>
-                    </div>
-                </article>
-
-                <article class="doctor-card">
-                    <div class="doc-avatar-box doc-purple">
-                        <span class="doc-initials">MS</span>
-                        <span class="avail-tag">● Available Today</span>
-                    </div>
-                    <div class="doc-body">
-                        <h3>Dr. M. Sujatha</h3>
-                        <p class="doc-desig">Head of Neurology & Neurosurgeon</p>
-                        <p class="doc-qual">MBBS, MS (Gen Surgery), MCh (Neurosurgery)</p>
-                        <div class="opd-timings">
-                            <span>🕒 OPD Hours: 10:00 AM – 02:00 PM (Mon–Fri)</span>
-                            <span>📍 Room: OPD Suite 208, 2nd Floor</span>
-                        </div>
-                        <a href="#appointment" class="btn-book-doc">Request Appointment</a>
-                    </div>
-                </article>
-
-                <article class="doctor-card">
-                    <div class="doc-avatar-box doc-green">
-                        <span class="doc-initials">KR</span>
-                        <span class="avail-tag">● Available Today</span>
-                    </div>
-                    <div class="doc-body">
-                        <h3>Dr. K. Rajesh</h3>
-                        <p class="doc-desig">Senior Orthopedic & Joint Surgeon</p>
-                        <p class="doc-qual">MBBS, MS (Orthopedics), DNB, Fellowship in Arthroplasty</p>
-                        <div class="opd-timings">
-                            <span>🕒 OPD Hours: 02:00 PM – 06:00 PM (Daily)</span>
-                            <span>📍 Room: OPD Suite 112, 1st Floor</span>
-                        </div>
-                        <a href="#appointment" class="btn-book-doc">Request Appointment</a>
-                    </div>
-                </article>
-
-                <article class="doctor-card">
-                    <div class="doc-avatar-box doc-orange">
-                        <span class="doc-initials">PS</span>
-                        <span class="avail-tag">● Available Today</span>
-                    </div>
-                    <div class="doc-body">
-                        <h3>Dr. P. Sravanthi</h3>
-                        <p class="doc-desig">Senior Pediatrician & Neonatologist</p>
-                        <p class="doc-qual">MBBS, MD (Pediatrics), Fellowship in Neonatal Intensive Care</p>
-                        <div class="opd-timings">
-                            <span>🕒 OPD Hours: 09:30 AM – 01:30 PM (Mon–Sat)</span>
-                            <span>📍 Room: Child Clinic Suite 101, Ground Floor</span>
-                        </div>
-                        <a href="#appointment" class="btn-book-doc">Request Appointment</a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Hospital Facilities & Infrastructure -->
-    <section class="section" id="facilities">
-        <div class="section-container">
-            <div class="section-title-wrap">
-                <span class="section-tag">ADVANCED INFRASTRUCTURE</span>
-                <h2>Hospital Facilities & Diagnostics</h2>
-                <p>Round-the-clock clinical diagnostics, blood transfusion services, and surgical infrastructure.</p>
-            </div>
-
-            <div class="facilities-grid">
-                <div class="facility-box">
-                    <div class="fac-icon">🧪</div>
-                    <h4>NABL Diagnostic Pathology</h4>
-                    <p>Automated biochemistry, hematology, and microbiological culture analysis with barcode-tracked same-day reporting.</p>
+        <!-- Doctor Consultation Booking Form -->
+        <div class="card">
+            <h2>Book a Doctor Appointment</h2>
+            <form class="appointment-form">
+                <div class="form-group">
+                    <label>Patient Full Name:</label>
+                    <input type="text" value="Yaswanth Avirneni" required placeholder="Enter patient name">
                 </div>
-
-                <div class="facility-box">
-                    <div class="fac-icon">🩻</div>
-                    <h4>Radiology & Imaging Suite</h4>
-                    <p>128-slice Dual-Source CT, 3.0 Tesla Silent MRI, high-resolution 4D Ultrasound, and digital mammography units.</p>
+                <div class="form-group">
+                    <label>Contact Phone Number:</label>
+                    <input type="tel" value="9640334422" required placeholder="10-digit mobile number">
                 </div>
-
-                <div class="facility-box">
-                    <div class="fac-icon">🩸</div>
-                    <h4>24/7 Licensed Blood Bank</h4>
-                    <p>Component separation facilities for packed red cells, fresh frozen plasma, platelets, and cryoprecipitate storage.</p>
+                <div class="form-group">
+                    <label>Select Department:</label>
+                    <select required>
+                        <option value="Cardiology">Cardiology & Heart Care</option>
+                        <option value="Neurology">Neurology</option>
+                        <option value="Orthopedics">Orthopedics</option>
+                    </select>
                 </div>
-
-                <div class="facility-box">
-                    <div class="fac-icon">💊</div>
-                    <h4>24-Hour Campus Pharmacy</h4>
-                    <p>Fully stocked emergency medications, surgical consumables, and critical intravenous therapies available 24 hours.</p>
+                <div class="form-group">
+                    <label>Preferred Date:</label>
+                    <input type="date" value="2026-11-15" required>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Inpatient Visiting Hours Section -->
-    <section class="section bg-light" id="visiting">
-        <div class="section-container">
-            <div class="section-title-wrap">
-                <span class="section-tag">PATIENT CARE GUIDELINES</span>
-                <h2>Inpatient Visiting Hours & Regulations</h2>
-                <p>To ensure a quiet, therapeutic healing environment and control infection, visiting hours are strictly monitored.</p>
-            </div>
-
-            <div class="visiting-schedule-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Hospital Ward Category</th>
-                            <th>Morning Visiting Window</th>
-                            <th>Evening Visiting Window</th>
-                            <th>Max Visitors Allowed</th>
-                            <th>Pass Requirement</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>General Medical & Surgical Wards</strong></td>
-                            <td>11:00 AM – 12:30 PM</td>
-                            <td>04:30 PM – 07:00 PM</td>
-                            <td>2 Visitors at a time</td>
-                            <td><span class="pass-tag green">Standard Visitor Pass</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Intensive Care Unit (ICU / CCU)</strong></td>
-                            <td>11:00 AM – 11:30 AM</td>
-                            <td>05:00 PM – 05:30 PM</td>
-                            <td>1 Immediate Family Member</td>
-                            <td><span class="pass-tag red">Special ICU Authorization</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Pediatric & Neonatal Ward</strong></td>
-                            <td>Open for Parents (24 Hours)</td>
-                            <td>04:00 PM – 06:00 PM (Relatives)</td>
-                            <td>Parents + 1 Visitor</td>
-                            <td><span class="pass-tag green">Parent Attendant Card</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Post-Operative Recovery Rooms</strong></td>
-                            <td>Closed (Rest Period)</td>
-                            <td>05:00 PM – 06:30 PM</td>
-                            <td>1 Attendant Only</td>
-                            <td><span class="pass-tag yellow">Attendant Badge</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="rules-callout">
-                <h4>🛡️ Infection Control & Visitor Etiquette Rules:</h4>
-                <ul>
-                    <li>Hand sanitization is mandatory at all ward entrances and bedside dispensers.</li>
-                    <li>Children below 12 years are not permitted in intensive care zones for safety and health reasons.</li>
-                    <li>Maintain low voice levels to respect patient rest and recovery. Mobile phones must be kept on silent.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Accessible Appointment Booking Form Section -->
-    <section class="section" id="appointment">
-        <div class="section-container">
-            <div class="section-title-wrap">
-                <span class="section-tag">ONLINE APPOINTMENT DESK</span>
-                <h2>Doctor Consultation Request Form</h2>
-                <p>Book your clinical consultation with our medical specialists. Accessible, fast, and instant confirmation.</p>
-            </div>
-
-            <div class="form-wrapper">
-                <form class="appointment-form" action="#bookingSuccess" method="GET">
-                    <div class="form-grid">
-                        <!-- Patient Name -->
-                        <div class="form-group">
-                            <label for="patientName">Patient Full Name <span class="required">*</span></label>
-                            <input type="text" id="patientName" name="patientName" value="Yaswanth Avirneni" required placeholder="Enter full name">
-                            <span class="field-hint">Primary patient or parent/guardian name</span>
-                        </div>
-
-                        <!-- Phone Number -->
-                        <div class="form-group">
-                            <label for="phoneNumber">Contact Mobile Number <span class="required">*</span></label>
-                            <input type="tel" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10}" placeholder="10-digit mobile number" value="9640334422">
-                            <span class="field-hint">SMS confirmation and OPD token will be sent here</span>
-                        </div>
-
-                        <!-- Email Address -->
-                        <div class="form-group">
-                            <label for="email">Email Address <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" required placeholder="name@nriit.edu.in" value="yaswanth.26000918@nriit.edu.in">
-                        </div>
-
-                        <!-- Department Selection -->
-                        <div class="form-group">
-                            <label for="department">Select Clinical Department <span class="required">*</span></label>
-                            <select id="department" name="department" required>
-                                <option value="">-- Choose Department --</option>
-                                <option value="Cardiology" selected>Cardiology & Cardiac Sciences</option>
-                                <option value="Neurology">Neurology & Neurosurgery</option>
-                                <option value="Orthopedics">Orthopedics & Joint Care</option>
-                                <option value="Pediatrics">Pediatrics & Neonatal Care</option>
-                                <option value="Pulmonology">Pulmonology & Respiratory Medicine</option>
-                                <option value="Emergency">Emergency & Trauma Medicine</option>
-                            </select>
-                        </div>
-
-                        <!-- Specialist Doctor -->
-                        <div class="form-group">
-                            <label for="doctor">Preferred Consultant Doctor <span class="required">*</span></label>
-                            <select id="doctor" name="doctor" required>
-                                <option value="">-- Select Specialist --</option>
-                                <option value="Dr. A. K. Varma" selected>Dr. A. K. Varma (MD, DM - Cardiology)</option>
-                                <option value="Dr. M. Sujatha">Dr. M. Sujatha (MS, MCh - Neurosurgery)</option>
-                                <option value="Dr. K. Rajesh">Dr. K. Rajesh (MS - Orthopedics)</option>
-                                <option value="Dr. P. Sravanthi">Dr. P. Sravanthi (MD - Pediatrics)</option>
-                            </select>
-                        </div>
-
-                        <!-- Preferred Date -->
-                        <div class="form-group">
-                            <label for="apptDate">Preferred Appointment Date <span class="required">*</span></label>
-                            <input type="date" id="apptDate" name="apptDate" required value="2026-11-15">
-                        </div>
-
-                        <!-- Preferred Time Slot -->
-                        <div class="form-group">
-                            <label for="timeSlot">Preferred Consultation Slot <span class="required">*</span></label>
-                            <select id="timeSlot" name="timeSlot" required>
-                                <option value="">-- Choose Time Window --</option>
-                                <option value="Morning" selected>Morning: 09:30 AM – 11:30 AM</option>
-                                <option value="Afternoon">Afternoon: 12:00 PM – 02:00 PM</option>
-                                <option value="Evening">Evening: 04:00 PM – 06:30 PM</option>
-                            </select>
-                        </div>
-
-                        <!-- Priority Level -->
-                        <div class="form-group">
-                            <label>Consultation Priority <span class="required">*</span></label>
-                            <div class="radio-options">
-                                <label class="radio-label">
-                                    <input type="radio" name="priority" value="Routine" checked>
-                                    <span>Routine General OPD</span>
-                                </label>
-                                <label class="radio-label">
-                                    <input type="radio" name="priority" value="Urgent">
-                                    <span>Urgent Specialist Review</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Symptoms / Reason for Visit -->
-                        <div class="form-group full-width">
-                            <label for="symptoms">Brief Symptoms / Medical History (Optional)</label>
-                            <textarea id="symptoms" name="symptoms" rows="3" placeholder="Briefly describe symptoms (e.g. chest discomfort, routine cardiac checkup, BP monitoring)..."></textarea>
-                        </div>
-
-                        <!-- Consent Checkbox -->
-                        <div class="form-group full-width consent-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" required checked>
-                                <span>I declare the patient details provided are accurate and agree to follow NRIIT Care Hospital infection control and OPD guidelines.</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="submit" class="submit-btn">✓ Submit Appointment Request</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pure CSS Appointment Confirmation Modal (:target) -->
-    <div class="modal-backdrop" id="bookingSuccess">
-        <div class="modal-box">
-            <a href="#appointment" class="close-x">✕</a>
-            <div class="modal-status">
-                <span class="status-icon">✓</span>
-                <h3>Appointment Request Confirmed!</h3>
-                <p>Your consultation slot has been reserved at NRIIT Care Hospital.</p>
-            </div>
-
-            <div class="token-receipt">
-                <div class="token-header">
-                    <span>OPD TOKEN NUMBER</span>
-                    <span class="token-val">NRIIT-MED-2026-0842</span>
+                <div class="form-group">
+                    <label>Symptoms / Medical Reason:</label>
+                    <textarea rows="3" placeholder="Briefly describe your symptoms..."></textarea>
                 </div>
-                <div class="token-grid">
-                    <div>
-                        <span class="t-lbl">Patient Name:</span>
-                        <p class="t-val">Yaswanth Avirneni (26000918)</p>
-                    </div>
-                    <div>
-                        <span class="t-lbl">Department:</span>
-                        <p class="t-val">Cardiology & Cardiac Sciences</p>
-                    </div>
-                    <div>
-                        <span class="t-lbl">Consultant:</span>
-                        <p class="t-val">Dr. A. K. Varma (MD, DM)</p>
-                    </div>
-                    <div>
-                        <span class="t-lbl">Scheduled Date:</span>
-                        <p class="t-val">November 15, 2026 (Morning Slot)</p>
-                    </div>
-                </div>
-            </div>
-
-            <p class="token-instructions">Please report at the NRIIT Hospital OPD Reception Counter 15 minutes before your slot time with your student/government ID.</p>
-
-            <div class="modal-actions">
-                <a href="#appointment" class="btn-done">Done / New Request</a>
-            </div>
+                <button type="submit" class="submit-btn">Book Appointment</button>
+            </form>
         </div>
     </div>
 
-    <!-- Hospital Footer -->
-    <footer class="hospital-footer">
-        <div class="footer-wrap">
-            <div class="footer-col">
-                <h4>Dr. RVR NRI Institute of Technology</h4>
-                <p class="sub">Deemed to be University u/s 3 of UGC Act, 1956</p>
-                <p>Sponsored by Sri Durga Malleswari Educational Society</p>
-                <p>Pothavarappadu (V), Agiripalli (M), Vijayawada Rural, Eluru District, Andhra Pradesh</p>
-                <p><strong>Emergency:</strong> 9640334422 | <strong>Email:</strong> info@nriit.edu.in</p>
-            </div>
-            <div class="footer-col text-right">
-                <h4>Web Development Activity-Based Learning</h4>
-                <p><strong>Case Study 11:</strong> Hospital and Healthcare Services Website</p>
-                <p>Developed with Pure HTML5 & CSS3 by:</p>
-                <p class="author-name"><strong>Yaswanth Avirneni</strong></p>
-                <p>Roll No: <strong>26000918</strong> | Class: <strong>CSM-1</strong> (CSE - AI & ML)</p>
-            </div>
-        </div>
+    <footer class="footer">
+        <p>Dr. RVR NRI Institute of Technology • Developed by <strong>Yaswanth Avirneni</strong> (26000918, CSM-1)</p>
     </footer>
 </body>
 </html>
