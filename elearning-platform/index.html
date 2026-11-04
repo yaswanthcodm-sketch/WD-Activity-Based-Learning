@@ -7,41 +7,74 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Top Header -->
     <header class="header">
-        <h1>EduPulse E-Learning Portal</h1>
-        <p>Dr. RVR NRI Institute of Technology • Web Development Hub</p>
+        <div class="header-inner">
+            <div class="brand">
+                <span class="logo-icon">⚡</span>
+                <div>
+                    <h1>EduPulse Learning Hub</h1>
+                    <p>Dr. RVR NRI Institute of Technology • Web Development Portal</p>
+                </div>
+            </div>
+            <div class="user-pill">
+                <span class="user-avatar">YA</span>
+                <span>Yaswanth Avirneni (26000918)</span>
+            </div>
+        </div>
     </header>
 
     <div class="container">
         <!-- Active Enrolled Track -->
-        <div class="card enrolled-card">
-            <h2>Welcome back, Yaswanth Avirneni (Roll No: 26000918, CSM-1)</h2>
-            <p><strong>Active Track:</strong> Full-Stack Modern Web Engineering</p>
-            <div class="progress-labels">
-                <span>Completed: 18 of 26 Lessons</span>
-                <span><strong>68% Progress</strong></span>
+        <div class="card enrolled-hero">
+            <div class="track-header">
+                <div>
+                    <span class="pill-active">● ACTIVE LEARNING SESSION</span>
+                    <h2>Full-Stack Modern Web Engineering</h2>
+                    <p>Enrolled Track: <em>Module 4 • Responsive CSS Grid & Layout Design</em></p>
+                </div>
+                <button class="btn btn-primary">▶ Resume (18:40)</button>
             </div>
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: 68%;"></div>
+            <div class="track-progress">
+                <div class="progress-labels">
+                    <span>Course Progress: 18 / 26 Lessons</span>
+                    <span class="pct-bold">68% Completed</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 68%;"></div>
+                </div>
             </div>
         </div>
 
-        <!-- Available Courses Grid -->
-        <h2 class="section-title">Featured Web Development Courses</h2>
+        <!-- Featured Courses Section -->
+        <div class="section-title-wrap">
+            <h2>Featured Web Engineering Courses</h2>
+            <p>Practical frontend courses taught by Dr. RVR NRIIT Faculty.</p>
+        </div>
+
         <div class="courses-grid">
             <!-- Course 1 -->
             <div class="course-card">
                 <div class="thumbnail thumb-blue">
-                    <span class="play">▶</span>
-                    <span class="hours">18 Hours</span>
+                    <span class="play-btn">▶</span>
+                    <span class="hours-tag">18 Hours</span>
                 </div>
                 <div class="card-body">
+                    <span class="cat-pill">Web Core</span>
                     <h3>Full-Stack Modern Web Engineering</h3>
-                    <p class="desc">Learn HTML5 page structure, semantic layout elements, and modern CSS styles.</p>
+                    <p class="desc">Learn semantic HTML5 page structure, CSS styling rules, and responsive web design concepts.</p>
+                    <div class="objectives">
+                        <strong>🎯 Learning Objectives:</strong>
+                        <ul>
+                            <li>Master semantic HTML document structure</li>
+                            <li>Build mobile-friendly fluid pages</li>
+                            <li>Deploy static websites to GitHub Pages</li>
+                        </ul>
+                    </div>
                     <p class="instructor">Instructor: <strong>Dr. S. Ramesh, Ph.D.</strong></p>
-                    <div class="card-bottom">
+                    <div class="card-footer">
                         <span class="rating">⭐ 4.9 (1,240)</span>
-                        <button class="btn btn-enrolled">Enrolled</button>
+                        <button class="btn btn-success">Enrolled</button>
                     </div>
                 </div>
             </div>
@@ -49,16 +82,25 @@
             <!-- Course 2 -->
             <div class="course-card">
                 <div class="thumbnail thumb-green">
-                    <span class="play">▶</span>
-                    <span class="hours">22 Hours</span>
+                    <span class="play-btn">▶</span>
+                    <span class="hours-tag">22 Hours</span>
                 </div>
                 <div class="card-body">
+                    <span class="cat-pill">CSS Layouts</span>
                     <h3>CSS3 Flexbox, Grid & Responsive UI</h3>
-                    <p class="desc">Master modern CSS layout methods including Flexbox, multi-column Grids, and media queries.</p>
+                    <p class="desc">Master modern CSS layout methods including Flexbox alignment, multi-column Grids, and media queries.</p>
+                    <div class="objectives">
+                        <strong>🎯 Learning Objectives:</strong>
+                        <ul>
+                            <li>Build multi-column responsive grid areas</li>
+                            <li>Master flex direction and alignment</li>
+                            <li>Design responsive mobile navigation bars</li>
+                        </ul>
+                    </div>
                     <p class="instructor">Instructor: <strong>Prof. K. Praveen Kumar</strong></p>
-                    <div class="card-bottom">
+                    <div class="card-footer">
                         <span class="rating">⭐ 4.95 (2,180)</span>
-                        <button class="btn btn-enroll">Enroll Now</button>
+                        <button class="btn btn-outline">Enroll Now</button>
                     </div>
                 </div>
             </div>
@@ -66,24 +108,35 @@
             <!-- Course 3 -->
             <div class="course-card">
                 <div class="thumbnail thumb-orange">
-                    <span class="play">▶</span>
-                    <span class="hours">14 Hours</span>
+                    <span class="play-btn">▶</span>
+                    <span class="hours-tag">14 Hours</span>
                 </div>
                 <div class="card-body">
+                    <span class="cat-pill">HTML5 & Forms</span>
                     <h3>Semantic HTML5 & Accessible Forms</h3>
-                    <p class="desc">Design accessible forms with input validation, semantic elements, and table formatting.</p>
+                    <p class="desc">Construct clean, accessible web forms using semantic tags, input constraints, and table formatting.</p>
+                    <div class="objectives">
+                        <strong>🎯 Learning Objectives:</strong>
+                        <ul>
+                            <li>Use accessible input labels and placeholders</li>
+                            <li>Implement HTML form validation constraints</li>
+                            <li>Format structured student and patient records</li>
+                        </ul>
+                    </div>
                     <p class="instructor">Instructor: <strong>Dr. V. Nagasri, Ph.D.</strong></p>
-                    <div class="card-bottom">
+                    <div class="card-footer">
                         <span class="rating">⭐ 4.88 (1,520)</span>
-                        <button class="btn btn-enroll">Enroll Now</button>
+                        <button class="btn btn-outline">Enroll Now</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
-        <p>Dr. RVR NRI Institute of Technology • Developed by <strong>Yaswanth Avirneni</strong> (26000918, CSM-1)</p>
+        <p><strong>Dr. RVR NRI Institute of Technology</strong> • Agiripalli, Eluru District, AP</p>
+        <p>Web Development ABL (Case Study 3) | Developed by <strong>Yaswanth Avirneni</strong> (Roll No: 26000918, CSM-1)</p>
     </footer>
 </body>
 </html>

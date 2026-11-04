@@ -3,136 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Academic Dashboard</title>
+    <title>Student Academic Dashboard - Dr. RVR NRIIT</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Top Header -->
     <header class="header">
-        <h1>Dr. RVR NRI Institute of Technology</h1>
-        <p>Student Academic Dashboard • Case Study 4</p>
+        <div class="header-inner">
+            <div class="brand">
+                <span class="logo-icon">🎓</span>
+                <div>
+                    <h1>Dr. RVR NRI Institute of Technology</h1>
+                    <p>Student Academic Dashboard • Case Study 4</p>
+                </div>
+            </div>
+            <div class="header-badge">CSM - 1 • 2026-2027</div>
+        </div>
     </header>
 
     <div class="container">
-        <!-- Student Details Card -->
-        <div class="card">
-            <h2>Student Information</h2>
-            <div class="info-grid">
-                <div><strong>Name:</strong> Yaswanth Avirneni</div>
-                <div><strong>Roll No:</strong> 26000918</div>
-                <div><strong>Branch:</strong> CSE (AI & ML)</div>
-                <div><strong>Section:</strong> CSM - 1</div>
-                <div><strong>Academic Year:</strong> 2026 - 2027</div>
-                <div><strong>Current SGPA:</strong> 9.36 (Outstanding)</div>
+        <!-- Student Profile Card -->
+        <div class="card profile-card">
+            <div class="avatar">YA</div>
+            <div class="profile-info">
+                <h2>Yaswanth Avirneni</h2>
+                <div class="meta-row">
+                    <span><strong>Roll No:</strong> 26000918</span>
+                    <span><strong>Branch:</strong> CSE (AI & ML)</span>
+                    <span><strong>Section:</strong> CSM - 1</span>
+                    <span class="status-badge">● Active Student</span>
+                </div>
             </div>
         </div>
 
-        <!-- Attendance Progress -->
+        <!-- KPI Metrics Grid -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <span class="m-label">Overall Attendance</span>
+                <div class="m-val green">88.5%</div>
+                <span class="m-sub">Eligible for End Exams</span>
+            </div>
+            <div class="metric-card">
+                <span class="m-label">Semester SGPA</span>
+                <div class="m-val blue">9.36</div>
+                <span class="m-sub">Grade: Outstanding (O)</span>
+            </div>
+            <div class="metric-card">
+                <span class="m-label">Credits Completed</span>
+                <div class="m-val purple">21 / 21</div>
+                <span class="m-sub">100% Core Load Cleared</span>
+            </div>
+            <div class="metric-card">
+                <span class="m-label">Upcoming Exam</span>
+                <div class="m-val orange">Mid-Term II</div>
+                <span class="m-sub">Starts Nov 16, 2026</span>
+            </div>
+        </div>
+
+        <!-- Subject Attendance Progress -->
         <div class="card">
-            <h2>Subject-wise Attendance (Min 75% Required)</h2>
-            <div class="subject-row">
-                <span>Web Development Fundamentals</span>
-                <span><strong>92%</strong> (46/50)</span>
+            <div class="card-head">
+                <h2>Subject-wise Attendance Percentages</h2>
+                <span class="pill-note">Min 75% Required</span>
             </div>
-            <div class="progress-bar"><div class="progress-fill" style="width: 92%;"></div></div>
-
-            <div class="subject-row">
-                <span>Responsive Web Design & CSS3</span>
-                <span><strong>94%</strong> (47/50)</span>
+            <div class="subject-item">
+                <div class="subj-meta">
+                    <span>Web Development Fundamentals (26CS101)</span>
+                    <span class="stat-pct">92% (46/50)</span>
+                </div>
+                <div class="progress-bar"><div class="fill green" style="width: 92%;"></div></div>
             </div>
-            <div class="progress-bar"><div class="progress-fill" style="width: 94%;"></div></div>
-
-            <div class="subject-row">
-                <span>Discrete Mathematical Structures</span>
-                <span><strong>82%</strong> (41/50)</span>
+            <div class="subject-item">
+                <div class="subj-meta">
+                    <span>Responsive Web Design & CSS3 (26CS103)</span>
+                    <span class="stat-pct">94% (47/50)</span>
+                </div>
+                <div class="progress-bar"><div class="fill green" style="width: 94%;"></div></div>
             </div>
-            <div class="progress-bar"><div class="progress-fill warning" style="width: 82%;"></div></div>
+            <div class="subject-item">
+                <div class="subj-meta">
+                    <span>Discrete Mathematical Structures (26BS103)</span>
+                    <span class="stat-pct">82% (41/50)</span>
+                </div>
+                <div class="progress-bar"><div class="fill yellow" style="width: 82%;"></div></div>
+            </div>
+            <div class="subject-item">
+                <div class="subj-meta">
+                    <span>Web Development & UI Lab (26CS105L)</span>
+                    <span class="stat-pct">96% (24/25)</span>
+                </div>
+                <div class="progress-bar"><div class="fill green" style="width: 96%;"></div></div>
+            </div>
         </div>
 
         <!-- Semester Results Table -->
         <div class="card">
             <h2>Semester Academic Results</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Code</th>
-                        <th>Subject Title</th>
-                        <th>Credits</th>
-                        <th>Internal</th>
-                        <th>External</th>
-                        <th>Total</th>
-                        <th>Grade</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>26CS101</td>
-                        <td>Web Development Fundamentals</td>
-                        <td>3.0</td>
-                        <td>38</td>
-                        <td>56</td>
-                        <td>94</td>
-                        <td>O</td>
-                    </tr>
-                    <tr>
-                        <td>26CS103</td>
-                        <td>Responsive Web Design & CSS3</td>
-                        <td>3.0</td>
-                        <td>39</td>
-                        <td>57</td>
-                        <td>96</td>
-                        <td>O</td>
-                    </tr>
-                    <tr>
-                        <td>26BS103</td>
-                        <td>Discrete Mathematics</td>
-                        <td>4.0</td>
-                        <td>34</td>
-                        <td>51</td>
-                        <td>85</td>
-                        <td>A+</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-wrap">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Subject Title</th>
+                            <th>Credits</th>
+                            <th>Internal</th>
+                            <th>External</th>
+                            <th>Total</th>
+                            <th>Grade</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>26CS101</code></td>
+                            <td>Web Development Fundamentals</td>
+                            <td>3.0</td>
+                            <td>38</td>
+                            <td>56</td>
+                            <td><strong>94</strong></td>
+                            <td><span class="grade-tag">O</span></td>
+                            <td><span class="badge-pass">PASS</span></td>
+                        </tr>
+                        <tr>
+                            <td><code>26CS103</code></td>
+                            <td>Responsive Web Design & CSS3</td>
+                            <td>3.0</td>
+                            <td>39</td>
+                            <td>57</td>
+                            <td><strong>96</strong></td>
+                            <td><span class="grade-tag">O</span></td>
+                            <td><span class="badge-pass">PASS</span></td>
+                        </tr>
+                        <tr>
+                            <td><code>26BS103</code></td>
+                            <td>Discrete Mathematical Structures</td>
+                            <td>4.0</td>
+                            <td>34</td>
+                            <td>51</td>
+                            <td><strong>85</strong></td>
+                            <td><span class="grade-tag">A+</span></td>
+                            <td><span class="badge-pass">PASS</span></td>
+                        </tr>
+                        <tr>
+                            <td><code>26CS105L</code></td>
+                            <td>Web Development & UI Lab</td>
+                            <td>1.5</td>
+                            <td>40</td>
+                            <td>58</td>
+                            <td><strong>98</strong></td>
+                            <td><span class="grade-tag">O</span></td>
+                            <td><span class="badge-pass">PASS</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <!-- Exam Timetable -->
-        <div class="card">
-            <h2>Upcoming Mid-Term II Examination Schedule</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Subject</th>
-                        <th>Room</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>16-11-2026</td>
-                        <td>10:00 AM - 12:00 PM</td>
-                        <td>Web Development Fundamentals</td>
-                        <td>Hall 3</td>
-                    </tr>
-                    <tr>
-                        <td>17-11-2026</td>
-                        <td>10:00 AM - 12:00 PM</td>
-                        <td>Responsive Web Design & CSS3</td>
-                        <td>Hall 3</td>
-                    </tr>
-                    <tr>
-                        <td>18-11-2026</td>
-                        <td>10:00 AM - 12:00 PM</td>
-                        <td>Discrete Mathematics</td>
-                        <td>Hall 2</td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- Examination Schedule & Notices -->
+        <div class="grid-2">
+            <div class="card">
+                <h2>Mid-Term II Exam Schedule</h2>
+                <div class="exam-item">
+                    <div class="date-badge"><span>NOV</span><strong>16</strong></div>
+                    <div class="exam-info">
+                        <strong>Web Development Fundamentals</strong>
+                        <p>⏰ 10:00 AM - 12:00 PM • Hall 3, Block-A</p>
+                    </div>
+                </div>
+                <div class="exam-item">
+                    <div class="date-badge"><span>NOV</span><strong>17</strong></div>
+                    <div class="exam-info">
+                        <strong>Responsive Web Design & CSS3</strong>
+                        <p>⏰ 10:00 AM - 12:00 PM • Hall 3, Block-A</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Department Notice Board</h2>
+                <div class="notice-box">
+                    <span class="tag-urgent">CIRCULAR</span>
+                    <h3>Web Development ABL Submission</h3>
+                    <p>All 1st year B.Tech students must submit their web design case studies to the faculty. Max: 10 Marks.</p>
+                </div>
+                <div class="notice-box">
+                    <span class="tag-info">ACADEMIC</span>
+                    <h3>Mid-Term Hall Tickets Released</h3>
+                    <p>Students with 75% attendance can collect hall tickets from the department office.</p>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
-        <p>Dr. RVR NRI Institute of Technology • Developed by <strong>Yaswanth Avirneni</strong> (26000918, CSM-1)</p>
+        <p><strong>Dr. RVR NRI Institute of Technology</strong> • Agiripalli, Eluru District, AP</p>
+        <p>Web Development ABL (Case Study 4) | Developed by <strong>Yaswanth Avirneni</strong> (Roll No: 26000918, CSM-1)</p>
     </footer>
 </body>
 </html>

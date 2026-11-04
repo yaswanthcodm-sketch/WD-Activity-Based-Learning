@@ -9,108 +9,140 @@
 <body>
     <!-- Emergency Banner -->
     <div class="emergency-bar">
-        <span>🚑 24/7 Emergency & Trauma Helpline: <strong>+91 9640334422</strong> | NRIIT Campus Health Center</span>
+        <span>🚨 24/7 Emergency & Trauma Hotline: <strong>+91 9640334422</strong> | NRIIT Campus Medical Center</span>
     </div>
 
     <!-- Header -->
     <header class="header">
-        <h1>NRIIT Care Hospital</h1>
-        <p>Affiliated with Dr. RVR NRI Institute of Technology • Case Study 11</p>
+        <div class="header-inner">
+            <div class="brand">
+                <span class="logo-icon">🏥</span>
+                <div>
+                    <h1>NRIIT Care Hospital</h1>
+                    <p>Super-Speciality Healthcare Center • Case Study 11</p>
+                </div>
+            </div>
+            <div class="header-badge">Dr. RVR NRIIT Campus</div>
+        </div>
     </header>
 
     <div class="container">
-        <!-- Clinical Departments -->
-        <div class="card">
-            <h2>Specialized Medical Departments</h2>
-            <div class="dept-grid">
-                <div class="dept-box">
-                    <h3>❤️ Cardiology</h3>
-                    <p>Coronary care, ECG, echo-cardiography, and heart health checkups.</p>
-                    <small>Head: Dr. A. K. Varma, MD, DM</small>
-                </div>
-                <div class="dept-box">
-                    <h3>🧠 Neurology</h3>
-                    <p>Diagnosis and care for neurological disorders, epilepsy, and stroke.</p>
-                    <small>Head: Dr. M. Sujatha, MS, MCh</small>
-                </div>
-                <div class="dept-box">
-                    <h3>🦴 Orthopedics</h3>
-                    <p>Joint care, fracture repair, bone health, and sports injury treatments.</p>
-                    <small>Head: Dr. K. Rajesh, MS (Ortho)</small>
-                </div>
+        <!-- Medical Departments -->
+        <div class="section-title">
+            <h2>Specialized Clinical Departments</h2>
+            <p>Comprehensive patient care across core medical specialities.</p>
+        </div>
+
+        <div class="dept-grid">
+            <div class="dept-card">
+                <div class="dept-icon">❤️</div>
+                <h3>Cardiology & Heart Care</h3>
+                <p>Advanced coronary monitoring, ECG diagnostics, and cardiac checkups.</p>
+                <span class="dept-head">Lead: Dr. A. K. Varma, MD, DM</span>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">🧠</div>
+                <h3>Neurology & Spine Care</h3>
+                <p>Treatment for neurological disorders, stroke rehabilitation, and spine therapy.</p>
+                <span class="dept-head">Lead: Dr. M. Sujatha, MS, MCh</span>
+            </div>
+
+            <div class="dept-card">
+                <div class="dept-icon">🦴</div>
+                <h3>Orthopedics & Joint Care</h3>
+                <p>Joint fracture repair, sports injury treatments, and arthritis rehabilitation.</p>
+                <span class="dept-head">Lead: Dr. K. Rajesh, MS (Ortho)</span>
             </div>
         </div>
 
         <!-- Inpatient Visiting Hours Table -->
         <div class="card">
-            <h2>Inpatient Visiting Hours & Rules</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Hospital Ward</th>
-                        <th>Morning Hours</th>
-                        <th>Evening Hours</th>
-                        <th>Visitor Limit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>General Wards</td>
-                        <td>11:00 AM - 12:30 PM</td>
-                        <td>04:30 PM - 07:00 PM</td>
-                        <td>2 Visitors</td>
-                    </tr>
-                    <tr>
-                        <td>Intensive Care Unit (ICU)</td>
-                        <td>11:00 AM - 11:30 AM</td>
-                        <td>05:00 PM - 05:30 PM</td>
-                        <td>1 Relative</td>
-                    </tr>
-                    <tr>
-                        <td>Pediatric Ward</td>
-                        <td>Parents Allowed 24 Hours</td>
-                        <td>04:00 PM - 06:00 PM</td>
-                        <td>Parents + 1 Visitor</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h2>Inpatient Visiting Hours & Regulations</h2>
+            <div class="table-wrap">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Hospital Ward</th>
+                            <th>Morning Visiting Window</th>
+                            <th>Evening Visiting Window</th>
+                            <th>Visitor Limit</th>
+                            <th>Pass Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>General Wards</strong></td>
+                            <td>11:00 AM - 12:30 PM</td>
+                            <td>04:30 PM - 07:00 PM</td>
+                            <td>2 Visitors</td>
+                            <td><span class="badge-pass green">Standard Pass</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Intensive Care Unit (ICU)</strong></td>
+                            <td>11:00 AM - 11:30 AM</td>
+                            <td>05:00 PM - 05:30 PM</td>
+                            <td>1 Attendant</td>
+                            <td><span class="badge-pass red">ICU Permit</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pediatric Ward</strong></td>
+                            <td>Parents 24 Hours</td>
+                            <td>04:00 PM - 06:00 PM</td>
+                            <td>Parents + 1 Visitor</td>
+                            <td><span class="badge-pass green">Parent Card</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- Doctor Consultation Booking Form -->
-        <div class="card">
-            <h2>Book a Doctor Appointment</h2>
+        <div class="card form-card">
+            <h2>Book a Doctor Consultation</h2>
+            <p class="form-sub">Fill in the patient details to request an outpatient appointment slot.</p>
+            
             <form class="appointment-form">
-                <div class="form-group">
-                    <label>Patient Full Name:</label>
-                    <input type="text" value="Yaswanth Avirneni" required placeholder="Enter patient name">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Patient Full Name *</label>
+                        <input type="text" value="Yaswanth Avirneni" required placeholder="Enter full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Phone Number *</label>
+                        <input type="tel" value="9640334422" required placeholder="10-digit mobile number">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Contact Phone Number:</label>
-                    <input type="tel" value="9640334422" required placeholder="10-digit mobile number">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Medical Department *</label>
+                        <select required>
+                            <option value="Cardiology">Cardiology & Heart Care</option>
+                            <option value="Neurology">Neurology & Spine Care</option>
+                            <option value="Orthopedics">Orthopedics & Joint Care</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Appointment Date *</label>
+                        <input type="date" value="2026-11-15" required>
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label>Select Department:</label>
-                    <select required>
-                        <option value="Cardiology">Cardiology & Heart Care</option>
-                        <option value="Neurology">Neurology</option>
-                        <option value="Orthopedics">Orthopedics</option>
-                    </select>
+                    <label>Symptoms / Medical Reason (Optional)</label>
+                    <textarea rows="3" placeholder="Briefly describe your symptoms or routine checkup reason..."></textarea>
                 </div>
-                <div class="form-group">
-                    <label>Preferred Date:</label>
-                    <input type="date" value="2026-11-15" required>
-                </div>
-                <div class="form-group">
-                    <label>Symptoms / Medical Reason:</label>
-                    <textarea rows="3" placeholder="Briefly describe your symptoms..."></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Book Appointment</button>
+
+                <button type="submit" class="submit-btn">✓ Confirm Consultation Request</button>
             </form>
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
-        <p>Dr. RVR NRI Institute of Technology • Developed by <strong>Yaswanth Avirneni</strong> (26000918, CSM-1)</p>
+        <p><strong>Dr. RVR NRI Institute of Technology</strong> • Agiripalli, Eluru District, AP</p>
+        <p>Web Development ABL (Case Study 11) | Developed by <strong>Yaswanth Avirneni</strong> (Roll No: 26000918, CSM-1)</p>
     </footer>
 </body>
 </html>
