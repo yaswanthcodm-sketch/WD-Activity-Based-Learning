@@ -70,8 +70,6 @@ WD-Activity-Based-Learning/
 │   └── healthcare_portal_preview.png
 │
 ├── Consolidated_Report.pdf           <-- Complete Formal Academic Submission Document
-├── build_consolidated_pdf_report.py  <-- Automated ReportLab PDF Generator
-├── generate_previews.py              <-- Preview Renderer
 └── README.md                         <-- Project Documentation & Student Details
 ```
 
